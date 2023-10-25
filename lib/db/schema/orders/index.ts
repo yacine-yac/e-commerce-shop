@@ -1,13 +1,14 @@
-import Products from "../products";
 import orderState from "./orderState";
-
-const {Schema}=require('mongoose');
-const orders=new Schema({
+import { Iorder } from "../../../models/orders";
+import { Schema} from "mongoose"; 
+import products from "../products";
+const mongoose=require('mongoose');
+const order:Schema<Iorder>=new mongoose.Schema({
     number:{type:Number,index:true,unique:true},
-    client:{type:Array(Number)},
-    products:{type:Array({quantity:Number,product:Products})},
+    client:{type:[Number]},
+    products:{type:[{quantity:Number,product:products}]},
     total:{type:Number},
     deliveryPrice:{type:Number},
     state:{type:orderState}
 });
-export default orders;
+export default order;
