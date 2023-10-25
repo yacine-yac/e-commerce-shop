@@ -1,6 +1,6 @@
 const mongoose=require('mongoose');
 const Stock={
-    quantity:{type:Number},
+    value:{type:Number},
     oldest:{type: mongoose.Schema.Types.ObjectId },
     time:{type:Date}
 }

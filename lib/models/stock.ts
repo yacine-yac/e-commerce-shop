@@ -1,6 +1,6 @@
 
 export interface Istock{
-    quantity:Number;
+    value:Number;
     oldest: Istock;
     time:Date;
 }
