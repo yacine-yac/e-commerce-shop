@@ -10,11 +10,10 @@ import contact from "./contact";
 const mongoose=require('mongoose'); 
 
 const client:Schema<Iclient> =new mongoose.Schema({
->>>>>>> 3e2756d (clients schema end)
-    id:{type:Number,index:true ,unique:true},
-    lastName:{type:String},
-    firstName:{type:String},
-    order:{type:Array()},
+    id:{type:Number,index:true ,unique:true,required:true},
+    lastName:{type:String,required:true},
+    firstName:{type:String,required:true},
+    order:{type:[Number]},
     contact:{type:contact}
 });
 <<<<<<< HEAD
