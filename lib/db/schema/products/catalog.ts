@@ -1,6 +1,6 @@
 const Catalog={
-    main:{type:String},
-    pictures:{type:[String]},
-    videos:{type:[String]}
+    main:{type:String,required:true},
+    pictures:{type:[String],required:false,default:[]},
+    videos:{type:[String],required:false,default:[]}
 };
 export default Catalog;

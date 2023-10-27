@@ -7,13 +7,13 @@ import { Iproduct } from "../../../models/products";
 
 const mongoose=require('mongoose');
 const products:Schema<Iproduct>=new mongoose.Schema({
-     codeBar:{type:String},
-     name:{type:String},
-     description:{type:String},
-     catalog:{type:Catalog},
-     quantity:{type:Stock},
-     price:{type:Price},
-     domain:{type:[Number]},
-     category:{type:[Number]}
+     codeBar:{type:String,required:true,unique:true},
+     name:{type:String,required:true},
+     description:{type:String,required:true},
+     catalog:{type:Catalog,required:true},
+     quantity:{type:Stock,required:true},
+     price:{type:Price,required:true},
+     domain:{type:[Number],required:true},
+     category:{type:[Number],required:true}
 });
 export default products;
