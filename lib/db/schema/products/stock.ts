@@ -1,7 +1,9 @@
+
+
 const mongoose=require('mongoose');
-const Stock={
+const stockSh=new mongoose.Schema({
     value:{type:Number,required:true},
-    oldest:{type: mongoose.Schema.Types.ObjectId ,ref:"Stock"},
+    oldest:{type:mongoose.Schema.Types.Nested,ref:'ProductQuantity',default:null},
     time:{type:Date,required:false,default:Date.now()}
-}
-export default Stock;
+})
+export default stockSh;
