@@ -1,4 +1,5 @@
 export interface Iprice{
     current:number,
-    reduction?:number 
+    reduction?:number,
+    oldest:Iprice
 }
