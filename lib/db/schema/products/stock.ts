@@ -1,9 +1,11 @@
+import { Schema } from "mongoose";
+import { Istock } from "../../../models/stock";
 
 
 const mongoose=require('mongoose');
-const stockSh=new mongoose.Schema({
+const stock:Schema<Istock>=new mongoose.Schema({
     value:{type:Number,required:true},
-    oldest:{type:mongoose.Schema.Types.Nested,ref:'ProductQuantity',default:null},
+    oldest:this,
     time:{type:Date,required:false,default:Date.now()}
 })
-export default stockSh;
+export default stock;
