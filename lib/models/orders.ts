@@ -1,5 +1,3 @@
-import orderState from "../db/schema/orders/orderState"
-import { Iproduct } from "./products"
 export interface IorderState{
     current:string,
     description?:string,
