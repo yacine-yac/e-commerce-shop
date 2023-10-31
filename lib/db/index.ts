@@ -1,35 +1,26 @@
-import { Mongoose } from "mongoose";
+import {  Mongoose } from "mongoose";
+import { mdb } from "./schema";
+import dataSetConfig from "./config" 
+import { Iproduct } from "../models/products";
+import { Ids } from "./configurations/types";
+/**
+ * Object handle interactions with mongoo Database (based moongose)
+ * @property {Mongoose}  db mongoose object
+ * @property {boolean} state db connection state
+ */
 
-const {server}=require('./config');
-class DataSet{
-    private db:Mongoose=require('mongoose');
-    readonly state:boolean=false;
-    constructor(){
-        
-            this.db.connect(server,)
-            this.state=true;
-   
-            this.state=false;
-     
-    
+async function DataSet(){ 
+    const DS:Ids={  
+              state:false,
+              models:mdb.models
     }
-    insert():boolean{
-
-        return true
+    try{
+           await mdb.connect(dataSetConfig.server);
+           DS.state=true;
+    }catch(e){
+           DS.state=false;
     }
+
+    return DS;
 }
-const db= require('mongoose');
-//import mongoose from "mongoose";
-let cc=5;
-function addition(){
-     cc+=77;
-    cc-=98;
-
-}
-
-addition();
-cc=+8;
-console.log(db);
-
-cc-2; 
- 
+export  default DataSet ;
