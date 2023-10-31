@@ -1,5 +1,6 @@
 import orderState from "./orderState";
-import { Iorder } from "../../../models/orders";
+import { orderTypes } from "../../configurations/types";
+import { Iorder, IorderState } from "../../../models/orders";
 import { Schema} from "mongoose";  
 
 const mongoose=require('mongoose');
