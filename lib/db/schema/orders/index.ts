@@ -36,6 +36,7 @@ order.methods={
     
 };
 
+<<<<<<< HEAD
 // };
 // const order=new Order({
 //     number:{type:Number,unique:true},
@@ -57,3 +58,6 @@ order.methods={
 //     state:{type:orderState,required:true}
 // });
 export default order ;
+=======
+export default order;
+>>>>>>> 6f06e59 (orders state db handle)
