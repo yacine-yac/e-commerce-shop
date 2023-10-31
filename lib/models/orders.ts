@@ -2,9 +2,8 @@ import orderState from "../db/schema/orders/orderState"
 import { Iproduct } from "./products"
 export interface IorderState{
     current:string,
-    time:Date,
-    description:string,
-    history:IorderState[]
+    description?:string,
+    history:IorderState
 }
 export interface Iorder{
     number:number,
@@ -15,7 +14,7 @@ export interface Iorder{
     state:{
     current:string, 
     description?:string,
-    history?:IorderState[]
+    history?:IorderState
 }
 }
 
