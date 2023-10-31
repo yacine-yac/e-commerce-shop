@@ -4,7 +4,7 @@ import { Schema} from "mongoose";
 
 const mongoose=require('mongoose');
 const order:Schema<Iorder>=new mongoose.Schema({
-    number:{type:Number,index:true,unique:true},
+    number:{type:Number,unique:true},
     client:{type:Number,required:true},
     products:{type:[
                     {
@@ -12,7 +12,11 @@ const order:Schema<Iorder>=new mongoose.Schema({
                         product:{type:Number,required:true}
                     }
                    ],
-                   required:true
+                   required:true,
+                   validate:{
+                       validator:function(arr:[]){ return arr.length>0 && arr },
+                       message:'products must not be empty'
+                   }
             },
     total:{type:Number,required:true},
     deliveryPrice:{type:Number,required:true},
