@@ -1,11 +1,21 @@
 import orderState from "./orderState";
 import { orderTypes } from "../../configurations/types";
 import { Iorder, IorderState } from "../../../models/orders";
-import { Schema} from "mongoose";  
+import { Schema} from "mongoose";   
+import globalState from "./globalState";
 
 const mongoose=require('mongoose');
 const order:Schema<Iorder>=new mongoose.Schema({
-    number:{type:Number,unique:true},
+    number:{
+        type:String,
+        unique:true,
+        default:async ()=>{
+           const global=new  globalState();
+           await global.initglobalState();
+           const orderNumber= global.getvalue();
+           return ` ${global.getYear()}/ ${orderNumber}`;
+        }
+    },
     client:{type:Number,required:true},
     products:{type:[
                     {
