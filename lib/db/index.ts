@@ -4,7 +4,6 @@ import { mdb } from "./schema";
 import dataSetConfig from "./config" 
 =======
 import dataSetConfig from "./configurations/config";
->>>>>>> ee6300f (dataset with config ans types)
 import { Iproduct } from "../models/products";
 import { Ids } from "./configurations/types";
 /**

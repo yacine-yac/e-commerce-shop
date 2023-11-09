@@ -145,7 +145,7 @@ describe.only("orders operations",()=>{
             total:200,
             deliveryPrice:15,
             state:{
-              current:"delivred"
+              current:"delivred"  
             }
           }
           const {orders}=dataSet.models;
