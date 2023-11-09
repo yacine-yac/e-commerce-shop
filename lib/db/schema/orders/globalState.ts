@@ -1,38 +1,70 @@
+import { Redis } from "ioredis";
 import { orderTypes } from "../../configurations/types";
-const mongoose=require("mongoose");
 
-const globalState=new mongoose.Schema({
-    data:{type:{order:Number,confirmed:Number,delivred:Number,returned:Number} }
+type IglobalState={
+      [x:number]:{
+            order: number;
+            confirmed: number;
+            delivred: number;
+            returned: number;
+      }
+}
+
+
+let g=2+23;
+const initState={order:0,confirmed:0,delivred:0,returned:0};
+class gb{
+  private globalState?:IglobalState;
+  private year:number;
+  private client:Redis;
+  constructor(){
+    this.client=new Redis({host:"127.0.0.1",port:6379});
+    this.year=new Date().getFullYear();
+     
+  }
+  async initglobalState(){
+       const gs=await this.client.get('globalState');
+   
+       this.globalState=  gs== undefined  ? this.defaultGlobalState()  : JSON.parse(gs) ;
+       if(this.globalState !=undefined && this.globalState[this.year]==undefined ){ 
+                this.globalState={
+                  ...this.globalState,
+                  [this.year]:initState
+                };
+        }
+        this.client.set('globalState',JSON.stringify(this.globalState)) 
+  }
+  getGlobalState(){
+   return this.globalState;
+  }
+  private defaultGlobalState(){      
+       return   {
+                    [this.year]:initState
+                };
+}
+  async  setGlobalState(state?:orderTypes){
     
-});
-
-globalState.methods={
-    updating(state?:orderTypes){
-        const year=new Date().getFullYear();
-        const global=  {[year]:{order:0,confirmed:0,delivred:0,returned:0}};
-        switch (state) {
+      if(this.globalState != undefined) 
+         
+          switch (state) {
             case "confirmed":
-                        global[year].confirmed++;
+                        this.globalState[this.year].confirmed++;
                 break;
             case "Delivered":
-                        global[year].confirmed--;
-                        global[year].delivred++;
+                        this.globalState[this.year].confirmed--;
+                        this.globalState[this.year].delivred++;
                 break;
             case "returned": 
-                        global[year].confirmed--;
-                        global[year].returned++;
+                        this.globalState[this.year].confirmed--;
+                        this.globalState[this.year].returned++;
             break;
-            case "cancel" || 'Delivering':
-                 /** don't anything */
-                break;
-            default:
-                        global[year].order++        
+            default:   
+                        this.globalState[this.year].order++;        
             break;
-        }
-        this.global=global;
-        this.save();
-        console.log(this.global,'hiiiiiiiii',global);
-        return "yes we can";
-    }
+          } 
+        await   this.client.set('globalState',JSON.stringify(this.globalState))
+          
+      }
 }
-export default globalState;
+
+export default gb;
