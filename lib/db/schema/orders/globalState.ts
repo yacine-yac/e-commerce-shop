@@ -20,7 +20,7 @@ class globalState{
   private constructor(){
    
     this.client=new Redis({host:"127.0.0.1",port:6379});
-    this.initglobalState();
+    // this.initglobalState();
     this.year=new Date().getFullYear();
     this.value=this.defaultGlobalState();
   }
@@ -73,12 +73,18 @@ class globalState{
         await   this.client.set('globalState',JSON.stringify(this.value))
           
       }
-      static async initglobalState(){
+      async generate(){ 
+        
+                    const orderNumber=await this.getCurrent().order+1 ;
+                    await this.setGlobalState();
+                    return `${orderNumber}/${this.year}`;
+      }
+      static   initglobalState(){
            if(globalState.gb==undefined){
-             globalState.gb=new globalState();
-             await globalState.gb.initglobalState();
+              globalState.gb=new globalState();
+                globalState.gb.initglobalState();
             }
-            return globalState.gb;
+            return  globalState.gb;
       }
 } 
 const GlobalState=globalState.initglobalState();
