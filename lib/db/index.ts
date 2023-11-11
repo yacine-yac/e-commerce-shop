@@ -1,8 +1,5 @@
 import {  Mongoose } from "mongoose";
-import { mdb } from "./schema";
-<<<<<<< HEAD
-import dataSetConfig from "./config" 
-=======
+import { mdb } from "./schema"; 
 import dataSetConfig from "./configurations/config";
 import { Iproduct } from "../models/products";
 import { Ids } from "./configurations/types";
@@ -15,7 +12,10 @@ import { Ids } from "./configurations/types";
 async function DataSet(){ 
     const DS:Ids={  
               state:false,
-              models:mdb.models
+              models:mdb.models,
+              close:async function(){
+                  return  await mdb.connection.close();
+              }
     }
     try{
            await mdb.connect(dataSetConfig.server);
