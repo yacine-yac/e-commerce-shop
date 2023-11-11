@@ -4,7 +4,7 @@ export interface IorderState{
     history:IorderState
 }
 export interface Iorder{
-    number:number,
+    orderNumber:string,
     client:number,
     products:{quantity:number,product:number}[],
     total:number,

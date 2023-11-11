@@ -1,20 +1,15 @@
 import orderState from "./orderState";
 import { orderTypes } from "../../configurations/types";
 import { Iorder, IorderState } from "../../../models/orders";
-import { Schema} from "mongoose";   
-import globalState from "./globalState";
+import { Schema} from "mongoose";
+import GlobalState from "./globalState";
 
 const mongoose=require('mongoose');
 const order:Schema<Iorder>=new mongoose.Schema({
-    number:{
-        type:String,
-        unique:true,
-        default:async ()=>{
-           const global=new  globalState();
-           await global.initglobalState();
-           const orderNumber= global.getvalue();
-           return ` ${global.getYear()}/ ${orderNumber}`;
-        }
+    orderNumber:{
+        type: String,
+        required:true,
+        unique:true
     },
     client:{type:Number,required:true},
     products:{type:[
@@ -34,7 +29,7 @@ const order:Schema<Iorder>=new mongoose.Schema({
     state:{type:orderState,required:true}
 });
 order.methods={
-    setState(state:orderTypes,description:string){
+    async setState(state:orderTypes,description:string){
                 const obj:IorderState={
                     current:state,
                     history:this.state,
@@ -42,8 +37,9 @@ order.methods={
                 };
                 this.state=obj;
                 this.save();
-    }
+                (await GlobalState).setGlobalState(state);
+    },
     
-};
 
+};
 export default order;
