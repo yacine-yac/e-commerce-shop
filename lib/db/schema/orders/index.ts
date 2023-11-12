@@ -36,8 +36,11 @@ order.methods={
                     description
                 };
                 this.state=obj;
-                this.save();
-                (await GlobalState).setGlobalState(state);
+                await this.save();
+               if( state !="Delevring"  || this.state.history.current=="confirmed" &&   this.state.current=="cancel"  ){
+                    GlobalState.setGlobalState(state);
+                    GlobalState.close();
+               }        
     },
     
 
