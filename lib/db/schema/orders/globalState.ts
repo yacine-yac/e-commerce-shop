@@ -1,6 +1,6 @@
 import { Redis } from "ioredis";
 import { orderTypes } from "../../configurations/types";
-
+import {config} from "./config"
 type IglobalState={
       [x:number]:{
             order: number;
@@ -18,11 +18,9 @@ class globalState{
   private  client:Redis;
   static gb:globalState;
   private constructor(){
-   
-    this.client=new Redis({host:"127.0.0.1",port:6379});
-    // this.initglobalState();
-    this.year=new Date().getFullYear();
-    this.value=this.defaultGlobalState();
+        this.client=new Redis(config);
+        this.year=new Date().getFullYear();
+        this.value=this.defaultGlobalState();
   }
   async initglobalState(){
        const gs=await this.client.get('globalState');
@@ -63,9 +61,15 @@ class globalState{
                         this.value[this.year].delivred++;
                 break;
             case "returned": 
-                        this.value[this.year].confirmed--;
+                        this.value[this.year].delivred--;
                         this.value[this.year].returned++;
             break;
+            case "cancel":
+                        this.value[this.year].confirmed--;
+                break;
+            case "Delevring" :
+                /** don't do anything */
+                break;
             default:   
                         this.value[this.year].order++;        
             break;
@@ -73,19 +77,23 @@ class globalState{
         await   this.client.set('globalState',JSON.stringify(this.value))
           
       }
-      async generate(){ 
-        
-                    const orderNumber=await this.getCurrent().order+1 ;
-                    await this.setGlobalState();
-                    return `${orderNumber}/${this.year}`;
-      }
-      static   initglobalState(){
-           if(globalState.gb==undefined){
-              globalState.gb=new globalState();
-                globalState.gb.initglobalState();
-            }
-            return  globalState.gb;
-      }
+  async generate(){  
+                const orderNumber=await this.getCurrent() ;
+                await  this.setGlobalState();
+                return `${orderNumber.order}/${this.year}`;
+  }
+   
+  async close(){
+       await this.client.quit();
+  }
+  static  initglobalState(){
+        if(globalState.gb==undefined){
+          globalState.gb=new globalState();
+           globalState.gb.initglobalState();
+        }
+        return globalState.gb;
+  }
 } 
-const GlobalState=globalState.initglobalState();
+globalState.initglobalState();
+const GlobalState= globalState.gb;
 export default GlobalState;
