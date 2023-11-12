@@ -8,6 +8,7 @@ import { Iprice } from "../lib/models/prices";
 import { Iproduct } from "../lib/models/products";
 import { Istock } from "../lib/models/stock";
 import { Ids } from "../lib/db/configurations/types";
+import GlobalState from "../lib/db/schema/orders/globalState";
  
    
 // describe("data base operations",()=>{
@@ -122,47 +123,90 @@ import { Ids } from "../lib/db/configurations/types";
 describe.only("orders operations",()=>{
   let dataSet:Ids;
 
-  beforeAll(async () => { 
-   dataSet=await  DataSet();
-   // Provide the actual collection name
-    // await dataSet.connecting();
-
+  beforeAll( async ()=>{ 
+   dataSet=await  DataSet(); 
+     
   });
-
-  afterAll(async () => {
+  afterAll(async ()=>{
     // Close the Mongoose connection after all tests
-    // await dataSet.db.connection.close();
+    await  dataSet.close();
+    await GlobalState.close();
   });
+
+ /** tests section */
+
   test("db connection",async()=>{
-    
-     expect(( dataSet.state)).toBe(true);
+      expect(( dataSet.state)).toBe(true); 
   })
-   test('insert order',async()=>{
-          const ord:Iorder={
-            number:1,
-            client:5,
-            products:[{quantity:2,product:456}],
-            total:200,
-            deliveryPrice:15,
-            state:{
-              current:"delivred"  
-            }
-          }
+  
+  const ord:Iorder[]=[
+              { 
+                  orderNumber: "eee",
+                  client:5,
+                  products:[{quantity:2,product:456}],
+                  total:200,
+                  deliveryPrice:15,
+                  state:{
+                    current:"order"  
+                  }
+              },
+              { 
+                  orderNumber: "eee",
+                  client:5,
+                  products:[{quantity:2,product:456}],
+                  total:200,
+                  deliveryPrice:15,
+                  state:{
+                    current:"order"  
+                  }
+              },
+              { 
+                  orderNumber: "eee",
+                  client:5,
+                  products:[{quantity:2,product:456}],
+                  total:200,
+                  deliveryPrice:15,
+                  state:{
+                    current:"order"  
+                  }
+              }
+          ];
+   
+  test('insert order',async()=>{
+       
+          const orderObject= { 
+                orderNumber: await GlobalState.generate(),
+                client:5,
+                products:[{quantity:2,product:456}],
+                total:200,
+                deliveryPrice:15,
+                state:{
+                  current:"order"  
+                }
+          }; 
           const {orders}=dataSet.models;
-          const order=new orders(ord);   
+          const order=new orders(orderObject);   
           const orderInsert= await  order.save();
-          console.log(">>>>order",orderInsert.global);
-        // orderInsert.setState() 
-          expect(orderInsert.number).toBe(1);
+       
+          expect(orderInsert.orderNumber).toBe("4/2023");
           
   });
-  test("select order and change state",async()=>{
-                const {orders}=dataSet.models;
-                const order=orders;
-                const orderInsert=await order.findOne({number:1});
-                orderInsert.setState("cancel","efdsfsdfsdfdskfls");
-          console.log(">>>>order",orderInsert.global);
-          expect(orderInsert.number).toBe(1);
+  test.each(ord)('insert multiple ',async (input)=>{ 
+              const on= await GlobalState.generate();
+              input.orderNumber=on; 
+              const {orders}=dataSet.models;
+              const order=new orders(input);   
+              const orderInsert= await  order.save(); 
+            
+              expect(orderInsert.orderNumber).toBe(on);
+  })
+
+  test.only("select order and change state",async()=>{
+          const {orders}=dataSet.models;
+          const order=orders;
+          const orderInsert=await order.findOne({orderNumber:"5/2023"});
+          await orderInsert.setState("confirmed"," fast mail confirmed ");  
+          expect(orderInsert.state.current).toBe("confirmed");
 
   })
 })
