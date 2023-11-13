@@ -18,9 +18,5 @@ client.methods={
     }
 }
 
-<<<<<<< HEAD
-export default client;
-=======
 client.plugin(autoIncrement,{model:"clients",field:"id",startAt:78549})
 export default client;
->>>>>>> cb14f47 (define plugin for auto increment ids)
