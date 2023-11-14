@@ -1,4 +1,11 @@
 :root {
+  --primary-background:#ee105c;
+  --secondary-background:#fff;
+  --icons-color:#4c5358;
+  --shadow:#41404879;
+
+
+  
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
@@ -40,39 +47,6 @@
   --card-border-rgb: 131, 134, 135;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-
-    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
-    --secondary-glow: linear-gradient(
-      to bottom right,
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0.3)
-    );
-
-    --tile-start-rgb: 2, 13, 46;
-    --tile-end-rgb: 2, 5, 19;
-    --tile-border: conic-gradient(
-      #ffffff80,
-      #ffffff40,
-      #ffffff30,
-      #ffffff20,
-      #ffffff10,
-      #ffffff10,
-      #ffffff80
-    );
-
-    --callout-rgb: 20, 20, 20;
-    --callout-border-rgb: 108, 108, 108;
-    --card-rgb: 100, 100, 100;
-    --card-border-rgb: 200, 200, 200;
-  }
-}
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -83,10 +57,11 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  position: relative;
 }
 
 body { 
-  background: var(--foreground-rgb);
+  background: var(--secondary-background)
 }
 
 a {
@@ -99,3 +74,31 @@ a {
     color-scheme: dark;
   }
 }
+
+header{ 
+  height:10vh;box-shadow: 0 0 9px 2px var(--shadow);
+}
+footer{
+  width: 100vw; height:10vh;box-shadow: 0 0 9px 0px var(--shadow);
+  background-color:var(--secondary-background)
+}
+footer nav { 
+  width:100%;height:100%;
+  display: flex;flex-direction: row;justify-content: space-between;
+  padding: 0% 3%;
+}
+nav span{
+  margin-top: -2px;
+  width: 18%;height: 100%; 
+}
+nav span a{width: 100%;height: 100%;}
+nav span a img{width: 55%;height: 65%;}
+
+.btn-active{
+    border-top: 4px solid var(--primary-background);
+}
+.btn-active img{fill:#a7f81033}
+
+/* position */
+.p-bottom{  position: fixed;bottom: 0;z-index: 10;}
+.center{display: flex;align-items: center;justify-content: center;}
