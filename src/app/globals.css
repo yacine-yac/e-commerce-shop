@@ -68,16 +68,13 @@ a {
   color: inherit;
   text-decoration: none;
 }
-
+button{ outline: none;border: 0;cursor: pointer;}
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
 }
 
-header{ 
-  height:10vh;box-shadow: 0 0 9px 2px var(--shadow);
-}
 footer{
   width: 100vw; height:10vh;box-shadow: 0 0 9px 0px var(--shadow);
   background-color:var(--secondary-background)
@@ -92,13 +89,22 @@ nav span{
   width: 18%;height: 100%; 
 }
 nav span a{width: 100%;height: 100%;}
-nav span a img{width: 55%;height: 65%;}
+nav span a svg{width: 55%;height: 65%;}
+nav span:not(.btn-active) svg:hover{opacity:0.6;transition: 0.4s ease-in;}
 
+
+/* buttons and effects */
 .btn-active{
     border-top: 4px solid var(--primary-background);
 }
-.btn-active img{fill:#a7f81033}
+.btn-active svg,.btn-active svg g{fill:var(--primary-background);stroke:var(--primary-background);}
 
 /* position */
 .p-bottom{  position: fixed;bottom: 0;z-index: 10;}
 .center{display: flex;align-items: center;justify-content: center;}
+
+
+ 
+
+/* icons svg classes */
+.st0{fill:"#4c5358";} 

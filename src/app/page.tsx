@@ -1,9 +1,9 @@
-import './page.module.css'
+import './page.css'
 
 export default function Home() {
   return (
-    <main>
-      
-    </main>
+    
+      <div className="pg-1">hello world dddddd</div>
+   
   )
 }
