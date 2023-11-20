@@ -1,6 +1,6 @@
 header{ 
     width:100vw; height:10vh;position: fixed;
-    perspective: 1000px;
+    perspective: 1000px;z-index:10;
     background-color: var(--secondary-background); 
     transform-style: preserve-3d;overflow:hidden;
 }
