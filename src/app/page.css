@@ -5,7 +5,7 @@
     /* background-color: green; */
     /* border:1px solid red; */
 }
-.pg-1 h2{
+.pg-1 > h2{
   margin: 7% 5% 1% 5%;
   font-size:var(--size-3);color:  var(--icons-color);
 }
@@ -35,11 +35,11 @@
 
 /**/
 .show{
-  width:100%;border:1px solid red;
-  padding:10% 0% 6% 0%;
+  width:100%;border:0px solid red;
+  padding:10% 0% 20% 0%;
 }
 .show h1{opacity:0.8;font-size: var(--size-2);}
-.show div{border:1px solid green;
+.show > div{ 
   padding:2% 4%;display: grid;
   grid-template-columns: repeat(2,1fr);
   grid-column-gap:20px;grid-row-gap:20px;
