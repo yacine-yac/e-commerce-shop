@@ -108,8 +108,12 @@ nav span:not(.btn-active) svg:hover{opacity:0.6;transition: 0.4s ease-in;}
 .p-bottom{  position: fixed;bottom: 0;z-index: 10;}
 .center{display: flex;align-items: center;justify-content: center;}
 
-
- 
+/* global classes*/
+.pg{
+  width:99vw; 
+  margin-top:12vh;
+  z-index: 1; 
+}
 
 /* icons svg classes */
 .st0{fill:"#4c5358";} 
