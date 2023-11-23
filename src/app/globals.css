@@ -3,12 +3,13 @@
   --secondary-background:#fff;
   --icons-color:#4c5358;
   --shadow:#41404879;
+  --color-ground-1:rgb(153, 175, 175);
   --title-color:#061011;
   --size-small:0.9rem;
   --size-1:1.4rem;
   --size-2:1.3rem;
   --size-3:1.2;
-  --size-4:0.75rem;
+  --size-4:0.85rem;
   
   --max-width: 1100px;
   --border-radius: 12px;
