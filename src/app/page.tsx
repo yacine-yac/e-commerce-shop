@@ -19,7 +19,7 @@ export default function Home() {
         <section className='slider'></section> 
         <section className="show">
            <h1>Recommended for you</h1>
-           <div>
+           <div className="show-grid">
             <ProductShow />
             <ProductShow />
             <ProductShow />
