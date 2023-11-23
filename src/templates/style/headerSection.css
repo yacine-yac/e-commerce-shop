@@ -5,6 +5,11 @@ header{
     transform-style: preserve-3d;overflow:hidden;
 }
 .header-shadow{box-shadow: 0 0 9px 2px var(--shadow); } 
+.header-search{padding-left: 3%;padding-right: 15%; display: flex;align-items: center;}
+.header-search h1{width: 100%;font-size: var(--size-1);color: var(--icons-color); text-align: center;}
+.header-search button{width: 15%;height: 70%;background-color: transparent;}
+.header-search button svg{width: 85%;height: 80%;}
+.header-search button svg:hover{transition: 0.6 ease;opacity: 0.75;}
 #header-1{
     width: 100vw;height: 10vh;position: relative;
     transform-origin: top ; 
