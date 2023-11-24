@@ -2,9 +2,81 @@
 div#filter{
     width:100%;height:100vh;
     position: fixed;z-index: 550;
-    background-color: rgba(52, 68, 68, 0);
+    background-color: rgba(52, 68, 68, 0.411);
 }
 div#filter section{ 
-    background-color: rgb(52, 68, 68);
-    width: 40%;height: 100%; 
+    background-color: rgb(52, 68, 68); 
+    width: 99vw;height: 60%;
+    border-top-right-radius: 18px;
+    border-top-left-radius: 18px;
+    box-shadow: 3px 1px 3px 0px var(--shadow);
 }
+.f-top{
+    width: 100%;height: 20%;
+    display: flex;padding: 4%  3%;
+}
+.f-top > h1{
+    font-family: sans-serif;
+    width: 100%;display:flex;align-items: center;
+    font-size: var(--size-2);color: var(--secondary-background);opacity:0.7;
+}
+.f-top button{width: 10%;height: 85%;background-color:transparent;}
+.f-top button svg{width: 80%;height: 65%;}
+.f-section{ 
+    width: 100%;padding: 2% 3% 0% 3%;display: grid;
+    grid-template-columns:  3fr  1fr; 
+    grid-template-rows: 0.5fr 1fr;grid-row-gap:0%;
+}
+.f-section h2{ 
+    height: 85%;
+    font-size: var(--size-3);color: var(--secondary-background);opacity: 0.7;
+}
+  
+.f-section span{
+    font-size: var(--size-4);font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: var(--secondary-background);
+}
+.progress-container {
+    width: 80%;
+    height: 10px;
+    position: relative;
+    grid-column:1/3;padding: 5%;place-self: center;
+  }
+.button {
+    width: 25px;height: 25px; top: 25%;
+    border-radius: 50%;
+    border: 2px solid var(--primary-background);
+    background-color: var(--primary-background);
+    color: var(--secondary-background);font-size: 1.5rem;
+    position: absolute;z-index: 15;
+    display:flex;justify-content: center;
+    align-items: center;align-content: center;
+}
+.button:nth-child(1){left: 15%;}
+.button:nth-child(2){left: 65%;}
+.progress-bar {
+    width: 100%;
+    height: 5px;position: relative;
+    background-color: #ccc;
+    border-radius: 5px;
+}
+.progress-inner {
+    width: 55%;
+    height: 5px;
+    background-color: var(--primary-background);
+    border-radius: 5px;
+    position: absolute;z-index: 5;
+    left: 15%;
+}
+
+.f-section:nth-child(3),.f-section:nth-child(4){height:30%; }
+.f-btns{
+   
+    width: 100%;height: 95%;flex: 0 0 100%;
+    grid-column:1/3;place-self: center;margin: 0; padding: 0;
+}
+.f-btns button{
+    height: 40%;min-width: 15%;  padding: 2%;border-radius: 13px;margin: 1% 1% 0% 0.5%;
+    color: var(--secondary-background);font-size: var(--size-4);
+    border: 2px solid var(--secondary-background);background-color: transparent;
+} 
