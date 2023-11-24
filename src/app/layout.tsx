@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import './globals.css'
 import HeaderSection from '@/templates/hearderSection';
 import { useEffect } from 'react';
@@ -20,6 +21,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   const currentPath=usePathname();
+  const router=useRouter();
   useEffect(()=>{
         let oldScroll:number=0;
         const header2=document.getElementById('header-2'),
@@ -46,7 +48,9 @@ export default function RootLayout({
         })
 
   })
-
+  const backNavigation=()=>{
+    router.back();
+  }
   const linkActive=(path:string):string | undefined=>{
    console.log( currentPath)
       return currentPath==path ? 'btn-active' : undefined;
@@ -54,8 +58,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-   
-        <HeaderSection />
+
+        <HeaderSection eventHandler={backNavigation} state={currentPath} />
      
         {children}
         <footer className='p-bottom'>
