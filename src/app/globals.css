@@ -101,13 +101,15 @@ nav span:not(.btn-active) svg:hover{opacity:0.6;transition: 0.4s ease-in;}
 
 /* buttons and effects */
 .btn-active{
-    border-top: 4px solid var(--primary-background);
+    border-top: 4px solid var(--primary-background) !important;
 }
 .btn-active svg,.btn-active svg g{fill:var(--primary-background);stroke:var(--primary-background);}
-
+.btn-active-ground{background-color: var(--primary-background) !important;}
 /* position */
 .p-bottom{  position: fixed;bottom: 0;z-index: 10;}
 .center{display: flex;align-items: center;justify-content: center;}
+.center-h{display: flex;justify-content: center;}
+.center-v{display: flex;align-items: center;}
 
 /* global classes*/
 .pg{
