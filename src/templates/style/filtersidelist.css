@@ -1,0 +1,10 @@
+/* filter section */
+div#filter{
+    width:100%;height:100vh;
+    position: fixed;z-index: 550;
+    background-color: rgba(52, 68, 68, 0);
+}
+div#filter section{ 
+    background-color: rgb(52, 68, 68);
+    width: 40%;height: 100%; 
+}
