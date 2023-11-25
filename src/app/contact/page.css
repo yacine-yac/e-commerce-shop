@@ -11,9 +11,8 @@
     font-size:var(--size-4);text-align: justify;
 }
 .pg-4 p:nth-child(4){opacity: 0.6;color:red}
-.pg-4 div{
-    border: 0px solid yellow;
-    height: 10vh; width: 100%;
+.pg-4 div{ 
+    height: 15vh; width: 100%;
     display: grid;grid-template-columns: 1fr 1fr;grid-template-rows: 1fr 1fr;place-items: center;
     background-color: var(--primary-background);
 }
@@ -26,8 +25,8 @@
 }
 .pg-4 div label:nth-child(3){  grid-column:  2;}
 .pg-4 div label svg{width:65%;height: 45%;}
-.pg-4 div label span{width:80%;border:0px solid red;box-sizing: border-box;
-    font-size: 10px;display: flex;
+.pg-4 div label span{width:80%;box-sizing: border-box;
+    font-size: 10px; 
     color: var(--title-color);text-align: center;
 }
 .pg-4 section{
