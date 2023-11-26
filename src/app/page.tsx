@@ -28,12 +28,12 @@ export default function Home() {
             </div>
         </section> 
         <section className='domain'>
-            <span className='btn-background-active'><Link  href="">All</Link></span>
-            <span><Link  href="">Shows & clothes</Link></span>
-            <span><Link  href="">Pc & phones</Link></span>
-            <span><Link  href="">Beauty</Link></span>
-            <span><Link  href="">Food</Link></span>
-            <span><Link  href="">Energy</Link></span>
+            <span className='center btn-background-active'><Link  href="">All</Link></span>
+            <span className='center'><Link  href="">Shows & clothes</Link></span>
+            <span className='center'><Link  href="">Pc & phones</Link></span>
+            <span className='center'><Link  href="">Beauty</Link></span>
+            <span className='center'><Link  href="">Food</Link></span>
+            <span className='center'><Link  href="">Energy</Link></span>
         </section>
         <section className="show">
            <h1>Recommended for you</h1>

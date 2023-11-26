@@ -20,7 +20,7 @@
 ::-webkit-scrollbar-track{background: transparent !important;} 
 .domain span{ 
   width: auto;  
-  padding:3% 5% 7% 5%;margin-left:1.5%;
+  padding:4% 5% 4% 5%;margin-left:1.5%;
   border: 2px solid #41404879;border-radius: 20px;
   color: var(--icons-color);font-size: var(--size-small);
 }
@@ -68,7 +68,7 @@
   width: 80px;height: 40px;
 }
 .slider > div > span:nth-child(2){
-  width: 50px;height:120px;padding: 2% 0% 2% 0%; border-radius: 20px;
+  width: 50px;height:120px;padding: 8% 0% 8% 0%; border-radius: 20px;
   flex-direction: column;
   background-color: var(--secondary-background);
   box-shadow: 2px 0px 4px  rgb(27, 31, 32); 
