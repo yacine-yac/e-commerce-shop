@@ -59,7 +59,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
 
-        <HeaderSection eventHandler={backNavigation} state={currentPath} />
+        <HeaderSection eventHandler={backNavigation} state={currentPath.split('/')[1]} />
      
         {children}
         <footer className='p-bottom'>
