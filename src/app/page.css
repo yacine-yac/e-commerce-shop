@@ -11,13 +11,9 @@
 .domain{ 
   width: 100%;height: 10vh;padding:2% 3% 5% 3%;white-space: nowrap; 
   margin: 2% 0% 2% 0%; display: flex;flex-direction: row;justify-content: space-between;
-  overflow-x: auto;overflow-y: hidden;
-  scrollbar-color: transparent transparent; 
+ 
 }
-::-webkit-scrollbar{width:50px;}
-::-webkit-scrollbar-thumb{background: transparent !important;}
-::-webkit-scrollbar-thumb:vertical{background: transparent !important;}
-::-webkit-scrollbar-track{background: transparent !important;} 
+
 .domain span{ 
   width: auto;  
   padding:4% 5% 4% 5%;margin-left:1.5%;
