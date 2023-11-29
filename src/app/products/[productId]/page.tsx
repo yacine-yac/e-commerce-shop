@@ -27,7 +27,7 @@ export default function Product(){
                             <button>42</button>
                             <button>43</button>
                             <button>44</button>
-                    </div>
+                    </div> 
                     <h2>3000 <sub>Dzd</sub></h2>
                 </div>
                 <button type="button">Add to cart</button>
