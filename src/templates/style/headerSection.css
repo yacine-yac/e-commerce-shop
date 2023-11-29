@@ -4,6 +4,7 @@ header{
     background-color: var(--secondary-background); 
     transform-style: preserve-3d;overflow:hidden;
 }
+.header-pr{background-color:transparent !important;}
 .header-shadow{box-shadow: 1px 1px 2px 2px var(--shadow); } 
 .header-search{padding-left: 3%;padding-right: 15%; display: flex;align-items: center;}
 .header-search h1{width: 100%;font-size: var(--size-1);color: var(--icons-color); text-align: center;}
