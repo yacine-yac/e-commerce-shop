@@ -1,7 +1,7 @@
 import Link from "next/link"
 import "./style/headerSection.css";
 export default function HeaderSection({state,eventHandler}:{state?:string,eventHandler:()=>void}){
-    return   state=="products" ?
+    return  ( state=="products" ||  state=="cart") ?
     <>
         <header className="header-search header-pr">
             <button onClick={eventHandler}>

@@ -27,7 +27,7 @@ export default function RootLayout({
         const header2=document.getElementById('header-2'),
               header1=document.getElementById('header-1'),
               header=document.getElementsByTagName('header'); 
-        currentPath.split('/')[1]!="products" && window.addEventListener("scroll",function(){
+        (currentPath.split('/')[1]!="products"  && currentPath.split('/')[1]!="cart") && window.addEventListener("scroll",function(){
             let currentScorll= document.documentElement.scrollTop;
             if(oldScroll>currentScorll){
                 /** down */
@@ -62,6 +62,7 @@ export default function RootLayout({
         <HeaderSection eventHandler={backNavigation} state={currentPath.split('/')[1]} />
      
         {children}
+        {currentPath.split('/')[1]!="cart" && 
         <footer className='p-bottom'>
             <nav>
                 <span className={linkActive("/")}>
@@ -87,6 +88,7 @@ export default function RootLayout({
             </nav>
         
         </footer>
+        }
       </body>
     </html>
   )
