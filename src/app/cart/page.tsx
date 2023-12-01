@@ -11,8 +11,36 @@ export default function Cart(){
                         </span>
                         <img src="/shoes.png" />
                      </section>
-                     <section>
-                        <h1 className="center">Nike shoes 2023 super good</h1>
+                     <section  className="center-v">
+                        <h1>Nike shoes 2023 super good</h1>
+                        <div className="scrolling">
+                            <div className="center btn-active-ground">
+                                <img src="/shoes.png" />
+                                <h2>1500 <sub>Dzd</sub></h2>
+                                <p>2L</p>
+                            </div>
+                            <div className="center">
+                                <img src="/shoes.png" />
+                                <h2>1500 <sub>Dzd</sub></h2>
+                                <p>2L</p>
+                            </div>
+                            <div className="center">
+                                <img src="/shoes.png" />
+                                <h2>1500 <sub>Dzd</sub></h2>
+                                <p>2L</p>
+                            </div>
+                            <div className="center">
+                                <img src="/shoes.png" />
+                                <h2>1500 <sub>Dzd</sub></h2>
+                                <p>2L</p>
+                            </div>
+                            <div className="center">
+                                <img src="/shoes.png" />
+                                <h2>1500 <sub>Dzd</sub></h2>
+                                <p>2L</p>
+                            </div>
+                            
+                        </div>
                      </section>
                 </div>
                 <div className="s-1 p-bottom">
@@ -25,6 +53,7 @@ export default function Cart(){
                         <h1>12</h1>
                     </section>
                     <button type="button">Confirmed order</button>
+                    <span>Included delivery price 650 Dzd</span>
                 </div>
            </div>
     </>

@@ -2,32 +2,36 @@
     width: 100vw;height: 88vh;
 }
 .pg-3 > div:nth-child(1){
-    width: 100%;height: 80%;
-    border:1px solid red;
+    width: 100%;height: 85%;
+    border:0px solid red;
 }
 .pg-3 > div:nth-child(1) section:nth-child(1){
     width: 100%;height: 55%;position: relative;
     /* background-color: red; */
 }
 .pg-3 > div:nth-child(1) section:nth-child(1) span{
-    width:45px;height: 100px;padding:6% 1%;
+    width:45px;height: 100px;padding:1% 1%;
     background-color: var(--primary-background);
     border-radius: 39px;
     position: absolute;z-index: 5;right: 2%;
     display: flex; flex-direction: column;
     box-shadow: 1px 1px 2px rgb(189, 199, 204);
-
 }
 .pg-3 > div:nth-child(1) section:nth-child(1) span h2{
       padding: 10%;height: 6%;
      font-size: var(--size-1);color: var(--icons-color);height: 100%;
 }
 .pg-3 > div:nth-child(1) section:nth-child(1) span button{
-     width: 100%;height: 100%;border-radius: 39px;
-     color:var(--secondary-background);
-     background-color: transparent;
-     border: 2px solid var(--secondary-background);
+  width: 100%;height: 100%;
+  border-radius: 20px 20px 0px 0px; 
+  color:var(--secondary-background);  
+  background-color: transparent;
      font-size: var(--size-2);
+}
+.pg-3 > div:nth-child(1) section:nth-child(1) span button:nth-child(1){
+    padding: 10%;
+  background-color: var(--secondary-background) !important;
+  color: var(--icons-color) !important;
 }
 /* .pg-3 > div:nth-child(1) section:nth-child(1) span h2{ */
     /* font-size: var(--size-1);
@@ -36,7 +40,42 @@
     width: 60%;height: 100%;
 }
 .pg-3 > div:nth-child(1) section:nth-child(2){
-    width: 100%;height: 45%;border: 1px solid green;
+    width: 100%;height: 45%;border: 0px solid green;flex-direction: column;
+}
+.pg-3 > div:nth-child(1) section:nth-child(2) h1{
+    margin:2%;color:var(--icons-color);font-size: var(--size-2);
+}
+.pg-3 > div:nth-child(1) section:nth-child(2) > div{
+    width: 100%;height: 100px;border: 0px solid rgb(23, 155, 216);
+    display:flex;
+    flex-direction: row;
+}
+.pg-3 > div:nth-child(1) section:nth-child(2) div div{
+    width: 100px;height: 90px;flex:0 0 auto;
+    border-radius:9px;
+    background-color: rgb(52, 68, 68);
+    box-shadow: 1px 3px 2px rgb(206, 207, 207);
+    margin: 5px;
+    position: relative;
+}
+.pg-3 > div:nth-child(1) section:nth-child(2) div div img{
+    width: 90%;height: 90%;
+}
+.pg-3 > div:nth-child(1) section:nth-child(2) div div h2{
+    position: absolute;
+    background-color: var(--secondary-background);
+    box-shadow: 1px 1px 2px rgb(77, 83, 83);
+    font-size: var(--size-4);
+    width: 65%;height: 20px;padding: 1% 0.5% 1% 1%;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    left:0;top: 10%;
+}
+.pg-3 > div:nth-child(1) section:nth-child(2) div div p{
+    position: absolute;
+    bottom: 7%;
+    color: var(--secondary-background);
+    font-size: var(--size-4);
 }
 .s-1{
     width: 100vw;height: 120px;padding: 5%;
@@ -44,7 +83,7 @@
     border-top-right-radius: 29px;
     border-top-left-radius: 29px;
     display: grid;
-    grid-template-rows: 1fr;grid-template-columns: 1fr 1fr 0.8fr;
+    grid-template-rows: 1fr;grid-template-columns: 1.3fr 1fr 0.7fr;
 }
 .s-1 section h1{
     font-size: var(--size-1);
@@ -62,4 +101,8 @@
     background-color: var(--primary-background);
     color: var(--secondary-background);place-self:center;
     box-shadow: 1px 3px 1px rgb(48, 54, 59);
+}
+.s-1 span{
+    font-size: var(--size-4);color: var(--secondary-background);
+    width: 100%;margin-top: 8px; opacity: 0.8;grid-column: span 3;
 }
