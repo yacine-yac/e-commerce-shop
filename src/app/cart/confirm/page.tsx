@@ -8,7 +8,7 @@ export default function Confirm(){
                  <h2>fill the application</h2>
                  <form>
                     <label form="name">
-                        <input id="name" type="text" name="name" placeholder="Name" />
+                       <input id="name" type="text" name="name" placeholder="Name" />
                     </label>  
                     <span>error message</span>
                     <label>

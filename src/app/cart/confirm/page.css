@@ -2,45 +2,49 @@
     width:100vw;height: 85vh; 
 }
 .pg-form{
-    width: 85%;height: 90%;padding: 2%;
+    width: 95%;height: 100%;padding: 2%;
     display: flex;flex-direction: column;
-    box-shadow: 1px 1px 1px 2px rgb(52, 68, 68);
-    border-radius: 20px;
+    /* box-shadow: 1px 1px 1px 2px rgb(52, 68, 68); */
+    /* border-radius: 20px; */
 }
 .pg-form h2{ 
     margin: 8px 0px;
     text-align: left;
-    font-size: var(--size-2);color: var(--icons-color);
+    font-size: var(--size-1);color: var(--icons-color);
 }
 .pg-form form{
-    width: 90%;height: 100%;border: 1px solid yellow;
-    /* display: grid;grid-template-columns: 1fr; */
-    /* grid-template-rows: 1fr 1fr 1fr 1fr; */
+    width: 100%;height: 100%; 
     row-gap: 15px;
 }
-.pg-form form label{
-    width: 100%;height: 35px;
+.pg-form form label,.pg-form form label:nth-child(5) input{
+    width: 100%;height: 40px;
     display: flex;flex-direction: row;flex-wrap: wrap;
     margin-top: 8px;
     border: 2px solid var(--shadow);
-}
+} 
 .pg-form form label:nth-child(5){
     height: 70px;justify-content: space-between;
+    border: 0px;margin-bottom: 15px;
 }
 .pg-form form label:nth-child(5) input{
     width: 100%;
 }
+.pg-form form label:nth-child(3) input{
+    width: 60%;
+}
 .pg-form form label select{
-    width: 48%;height: 35px;border: 0px;padding: 8px;
+    width: 48%;height: 36px;border: 0px;padding: 8px;
+    background-color: var(--primary-background);
+    color: var(--secondary-background);
 }
 .pg-form form label select#operator{
-    width: 20%;
+    width: 30%;
 }
 .pg-form form span{
     font-size: var(--size-4);color: var(--icons-color);margin-top: 5px;
-}
+} 
 .pg-form form label input{
-    border:1px solid red;
+    border:0px solid red;
     width: 80%;padding: 5px;
 }
 .s-1-two{
