@@ -62,7 +62,7 @@ export default function RootLayout({
         <HeaderSection eventHandler={backNavigation} state={currentPath.split('/')[1]} />
      
         {children}
-        {currentPath.split('/')[1]!="cart" && 
+        {(currentPath.split('/')[1]!="cart" && currentPath.split('/')[1]!="products") && 
         <footer className='p-bottom'>
             <nav>
                 <span className={linkActive("/")}>
