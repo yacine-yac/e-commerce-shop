@@ -1,4 +1,5 @@
 import { Iprice } from "../../../lib/models/prices";
+import { Iproduct } from "../../../lib/models/products";
 
 class CartProduct{
     private codeBar:string;
@@ -22,8 +23,12 @@ class CartProduct{
     setCategory(category:number){
         this.category=category;
     }
-    getTotal(){
+    getTotalByProduct(){
         return this.quantity*this.price.current;
+    }
+    /** check if product is availibale */
+    getStatus(product:Iproduct){
+       return this.quantity > product.quantity.value ? false : true;
     }
 }
 

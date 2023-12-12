@@ -8,7 +8,7 @@ class CartShoping{
     private delivery:number;
 
     private constructor(value:CartProduct[]=[]){
-        this.value=JSON.parse(localStorage.getItem('cart') as string) ?? value;
+        this.value= value;
         this.total=0;
         this.delivery=0;
     }
@@ -21,7 +21,7 @@ class CartShoping{
     }
     setTotal(){
         const total1=this.value.reduce((prev:number,current:CartProduct)=>{
-                      return prev+current.getTotal();
+                      return prev+current.getTotalByProduct();
              },0);
         this.total=total1+this.delivery;
     }
@@ -29,8 +29,9 @@ class CartShoping{
         return this.total;
     }
     static init(){
+        const cart:CartProduct[]=JSON.parse(localStorage.getItem('cart') as string) ;
         CartShoping.main ==undefined &&
-                                         (CartShoping.main=new CartShoping());
+                                         (CartShoping.main=new CartShoping(cart));
     }
 }
 
