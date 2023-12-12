@@ -1,5 +1,5 @@
 export interface Icatalog{
-    main:String;
+    main:string;
     pictures:string[];
     videos:string[];
 };
