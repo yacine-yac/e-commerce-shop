@@ -1,0 +1,10 @@
+{
+    "codeBar":"456",
+    "name":"ecouteur",
+        "description":"use this product ....", 
+        "catalog":{"main":"mak.jpg","videos":[],"pictures":[]},
+        "quantity":{"value":10,"oldest":null},
+    "price":{"current":120},
+    "category":[5],
+    "domain":[5,6,9]
+}

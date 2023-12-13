@@ -1,0 +1,10 @@
+{ 
+                "orderNumber":"",
+                "client":5,
+                "products":[{"quantity":2,"product":456}],
+                "total":200,
+                "deliveryPrice":15,
+                "state":{
+                    "current":"order"  
+                }
+}
