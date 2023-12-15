@@ -1,10 +1,42 @@
-{
-    "codeBar":"456",
-    "name":"ecouteur",
+[
+    {
+        "codeBar":"123",
+        "name":"nike shoes",
         "description":"use this product ....", 
         "catalog":{"main":"mak.jpg","videos":[],"pictures":[]},
         "quantity":{"value":10,"oldest":null},
-    "price":{"current":120},
-    "category":[5],
-    "domain":[5,6,9]
-}
+        "price":{"current":3000},
+        "category":[1,2,3,4],
+        "domain":[1,2]
+    },
+    {
+        "codeBar":"456",
+        "name":"T-shirt nike",
+        "description":"use this product ....", 
+        "catalog":{"main":"mak.jpg","videos":[],"pictures":[]},
+        "quantity":{"value":90,"oldest":null},
+        "price":{"current":1500},
+        "category":[1,2,3],
+        "domain":[1]
+    },
+    {
+        "codeBar":"789",
+        "name":"jeans Jack",
+        "description":"use this product ....", 
+        "catalog":{"main":"mak.jpg","videos":[],"pictures":[]},
+        "quantity":{"value":20,"oldest":null},
+        "price":{"current":5000},
+        "category":[1,2,3,4],
+        "domain":[1,2]
+    },
+    {
+        "codeBar":"147",
+        "name":"T-shirt adidas",
+        "description":"use this product ....", 
+        "catalog":{"main":"mak.jpg","videos":[],"pictures":[]},
+        "quantity":{"value":10,"oldest":null},
+        "price":{"current":1200},
+        "category":[1,2,3],
+        "domain":[1,2]
+    }
+]

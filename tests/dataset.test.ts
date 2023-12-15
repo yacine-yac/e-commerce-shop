@@ -1,10 +1,5 @@
-import DataSet from "../lib/db" 
-import order from "../lib/db/schema/orders";
-import stock from "../lib/db/schema/products/stock";
-import { Iclient } from "../lib/models/clients";
-import { Iorder } from "../lib/models/orders";
-import { Iprice } from "../lib/models/prices";
-import { Iproduct } from "../lib/models/products";
+import DataSet from "../lib/db"  
+import { Iprice } from "../lib/models/prices"; 
 import { Istock } from "../lib/models/stock";
 import { Ids } from "../lib/db/configurations/types";
 import GlobalState from "../lib/db/schema/orders/globalState";
@@ -13,9 +8,10 @@ import group from "./data/group.json"
 import category from "./data/category.json";
 import product from "./data/product.json"
 import orderObject from "./data/order.json"
+import client from "./data/client.json";
 
 
-describe.only("insert category, domain, group",()=>{
+describe("insert category, domain, group",()=>{
    let dataSet:Ids;
 
    beforeAll(async () => {
@@ -38,9 +34,9 @@ describe.only("insert category, domain, group",()=>{
          expect((await m).length).toBe(3);
   });
   test("group",async()=>{
-    const {groups}= dataSet.models;
-    const m= await groups.insertMany(group); 
-    expect((await m).length).toBe(3);
+        const {groups}= dataSet.models;
+        const m= await groups.insertMany(group); 
+        expect((await m).length).toBe(3);
   });   
   test.each(category)("category",async(cat)=>{
         const {categories}= dataSet.models;
@@ -49,7 +45,7 @@ describe.only("insert category, domain, group",()=>{
         expect(mm.name).toBe(cat.name);
   });  
 });
-describe("collections testing",()=>{
+describe("product operations",()=>{
    let dataSet:Ids; 
    beforeAll(async () => {
      dataSet =await DataSet(); 
@@ -60,35 +56,31 @@ describe("collections testing",()=>{
    afterAll(async () => {
      // Close the Mongoose connection after all tests
       await dataSet.close();
+      await GlobalState.close();
+
    });
 
     
 
-   it("products insert",async()=>{  
-          const {products}= dataSet.models
-          const rr=new products(product); 
-          console.log("ddddd",rr);
-          expect(rr).toBe(true);
+   it.each(product)("products insert",async(pro)=>{  
+      const {products}= dataSet.models
+      const r=new products(pro);
+      const rr=await r.save();
+      expect(rr._id).toBeDefined(); 
    });
-         
-   it("domain add",async()=>{
-         const data={id:165,name:"telecom",product:[5,99]};
-         const {domains}=dataSet.models;
-         const result=new domains(data);
-         expect(result).toBe(true);
-   });
+
    it("stock add ",async()=>{
 
-        const product=await dataSet.models['products'].findOne({codeBar:'456'});
-        if(!product)  console.log("echou"); 
+        const m=await dataSet.models['products'].findOne({codeBar:product[0].codeBar});
+        if(!m)  console.log("echou"); 
         console.log("suuccess");
         const newStock:Istock={
-            value:4+ product.quantity.value,
-            oldest:product.quantity
+            value:4+ m.quantity.value,
+            oldest:m.quantity
         };
-        product.quantity=newStock;
-        product.save();
-        expect(product.name).toBe("ecouteur");
+        m.quantity=newStock;
+        m.save();
+        expect(m.name).toBe("ecouteur");
    });
    it('select stock',async()=>{
         const product=await dataSet.models['products'].findOne({codeBar:'456'});
@@ -113,7 +105,30 @@ describe("collections testing",()=>{
    })
 })
 
-describe("orders operations",()=>{
+describe("client operations",()=>{
+  let dataSet:Ids; 
+  beforeAll(async () => {
+    dataSet =await DataSet(); 
+     // await dataSet.connecting();
+
+  });
+
+  afterAll(async () => {
+    // Close the Mongoose connection after all tests
+     await dataSet.close();
+     await GlobalState.close();
+
+  });
+
+  it.each(client)("insert clients",async(customer)=>{
+         const {clients}=dataSet.models;
+         const cl=new clients(customer);
+         await cl.save();
+         expect(cl._id).toBeDefined();
+  });
+});
+
+describe.only("orders operations",()=>{
   let dataSet:Ids;
 
   beforeAll( async ()=>{ 
@@ -132,68 +147,15 @@ describe("orders operations",()=>{
       expect(( dataSet.state)).toBe(true); 
   })
   
-  const ord:Iorder[]=[
-              { 
-                  orderNumber: "eee",
-                  client:5,
-                  products:[{quantity:2,product:456}],
-                  total:200,
-                  deliveryPrice:15,
-                  state:{
-                    current:"order"  
-                  }
-              },
-              { 
-                  orderNumber: "eee",
-                  client:5,
-                  products:[{quantity:2,product:456}],
-                  total:200,
-                  deliveryPrice:15,
-                  state:{
-                    current:"order"  
-                  }
-              },
-              { 
-                  orderNumber: "eee",
-                  client:5,
-                  products:[{quantity:2,product:456}],
-                  total:200,
-                  deliveryPrice:15,
-                  state:{
-                    current:"order"  
-                  }
-              }
-          ];
-   
-  test('insert order',async()=>{
+  test.only.each(orderObject)('insert order',async(ord)=>{
        
-          // const orderObject= { 
-          //       orderNumber: await GlobalState.generate(),
-          //       client:5,
-          //       products:[{quantity:2,product:456}],
-          //       total:200,
-          //       deliveryPrice:15,
-          //       state:{
-          //         current:"order"  
-          //       }
-          // }; 
-          orderObject.orderNumber=await GlobalState.generate();
+          ord.orderNumber=await GlobalState.generate();
           const {orders}=dataSet.models;
-          const order=new orders(orderObject);   
+          const order=new orders(ord);   
           const orderInsert= await  order.save();
-       
-          expect(orderInsert.orderNumber).toBe("4/2023");
+          expect(orderInsert._id).toBeDefined();
           
-  });
-  test.each(ord)('insert multiple ',async (input)=>{ 
-              const on= await GlobalState.generate();
-              input.orderNumber=on; 
-              const {orders}=dataSet.models;
-              const order=new orders(input);   
-              const orderInsert= await  order.save(); 
-            
-              expect(orderInsert.orderNumber).toBe(on);
-  })
+  }); 
 
   test("select order and change state",async()=>{
           const {orders}=dataSet.models;

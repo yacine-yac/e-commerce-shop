@@ -1,10 +1,22 @@
-{ 
-                "orderNumber":"",
-                "client":5,
-                "products":[{"quantity":2,"product":456}],
-                "total":200,
-                "deliveryPrice":15,
-                "state":{
-                    "current":"order"  
-                }
-}
+[
+            { 
+                            "orderNumber":"",
+                            "client":16,
+                            "products":[{"quantity":1,"product":456}],
+                            "total":2000,
+                            "deliveryPrice":500,
+                            "state":{
+                                "current":"order"  
+                            }
+            },
+            { 
+                            "orderNumber":"",
+                            "client":17,
+                            "products":[{"quantity":2,"product":123}],
+                            "total":6200,
+                            "deliveryPrice":200,
+                            "state":{
+                                "current":"order"  
+                            }
+            }
+]

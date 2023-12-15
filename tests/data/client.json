@@ -1,4 +1,4 @@
-
+[
     {
         "lastName":"yacine",
         "firstName":"malki",
@@ -8,4 +8,15 @@
                 "adress":"dfsfsdfsdfs",
                 "email":"yacine@gmail.com"
         }
+    },
+    {
+        "lastName":"amine",
+        "firstName":"mahoui",
+        "order":[],
+        "contact":{
+                "phone":"0652356695",
+                "adress":"dfsfsdfsdfs",
+                "email":"amine@gmail.com"
+        }
     }
+]
