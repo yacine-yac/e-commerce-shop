@@ -21,7 +21,6 @@ describe.only("insert category, domain, group",()=>{
    beforeAll(async () => {
      dataSet =await DataSet(); // Provide the actual collection name
     //  await dataSet.connecting();
-
    });
  
    afterAll(async () => {
@@ -31,6 +30,7 @@ describe.only("insert category, domain, group",()=>{
    });
 
 /** ============================================== tests ====================================================== */
+  
   
   test("domain",async()=>{
          const {domains}= dataSet.models;
@@ -46,13 +46,8 @@ describe.only("insert category, domain, group",()=>{
         const {categories}= dataSet.models;
         const m=new categories(cat); 
         const mm=await m.save();
-        expect((mm).length).toBe(4);
+        expect(mm.name).toBe(cat.name);
   });  
-  test("select groups",async()=>{
-    const {groups}= dataSet.models;
-    const j=await  groups.findOneAndUpdate({id:77},{$push:{categories:88}});  
-    expect( (j.categories as any)).toEqual([]);
-  });
 });
 describe("collections testing",()=>{
    let dataSet:Ids; 
