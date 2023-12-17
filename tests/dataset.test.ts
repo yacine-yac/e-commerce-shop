@@ -9,6 +9,7 @@ import category from "./data/category.json";
 import product from "./data/product.json"
 import orderObject from "./data/order.json"
 import client from "./data/client.json";
+import { Products } from "../lib/db/schema";
 
 
 describe("insert category, domain, group",()=>{
@@ -45,7 +46,7 @@ describe("insert category, domain, group",()=>{
         expect(mm.name).toBe(cat.name);
   });  
 });
-describe("product operations",()=>{
+describe.only("product operations",()=>{
    let dataSet:Ids; 
    beforeAll(async () => {
      dataSet =await DataSet(); 
@@ -62,9 +63,10 @@ describe("product operations",()=>{
 
     
 
-   it.each(product)("products insert",async(pro)=>{  
+   it.only.each(product)("products insert",async(pro)=>{  
       const {products}= dataSet.models
-      const r=new products(pro);
+      // Products
+      const r=new Products(pro);
       const rr=await r.save();
       expect(rr._id).toBeDefined(); 
    });
@@ -128,7 +130,7 @@ describe("client operations",()=>{
   });
 });
 
-describe.only("orders operations",()=>{
+describe("orders operations",()=>{
   let dataSet:Ids;
 
   beforeAll( async ()=>{ 
@@ -147,7 +149,7 @@ describe.only("orders operations",()=>{
       expect(( dataSet.state)).toBe(true); 
   })
   
-  test.only.each(orderObject)('insert order',async(ord)=>{
+  test.each(orderObject)('insert order',async(ord)=>{
        
           ord.orderNumber=await GlobalState.generate();
           const {orders}=dataSet.models;
