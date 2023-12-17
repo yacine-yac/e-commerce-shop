@@ -4,13 +4,17 @@ import products from "./products";
 import category from "./category";
 import domain from "./domain";
 import groups from "./groups";
+import dataSetConfig from "../configurations/config";
 
 
 const mongoose=require('mongoose'); 
-mongoose.model('clients',client); 
-mongoose.model("orders",order);
-mongoose.model("products",products);
-mongoose.model('categories',category).resetCount();
-mongoose.model("domains",domain).resetCount();
-mongoose.model('groups',groups).resetCount();
+(async function(){
+    await mongoose.connect(dataSetConfig.server);
+})()
+export  const Clients=mongoose.models.clients || mongoose.model('clients',client); 
+export const Orders=mongoose.models.orders || mongoose.model("orders",order);
+export const Products=mongoose.models.products || mongoose.model("products",products);
+export const Categories=mongoose.models.categories || mongoose.model('categories',category).resetCount();
+export const Domains=mongoose.models.domains || mongoose.model("domains",domain).resetCount();
+export const Groups=mongoose.models.groups || mongoose.model('groups',groups); 
 export {mongoose as mdb};
