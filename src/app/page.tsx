@@ -1,10 +1,13 @@
 import { ProductShow } from '@/templates/productShow'
 import Link from 'next/link'
-import './page.css'
+import './page.css'  
+import Products from '@/model/product/product'
+async function Home(){
+  
+  const p=new Products();
+  const products=await p.get();  
 
-export default function Home() {
   return (
-    
       <div className="pg pg-1">
         <h2>Hi,Dear</h2>
         <h1>Enjoy shopin on Stop & Shop</h1>
@@ -38,15 +41,21 @@ export default function Home() {
         <section className="show">
            <h1>Recommended for you</h1>
            <div className="show-grid">
-            <ProductShow />
-            <ProductShow />
-            <ProductShow />
-            <ProductShow />
-            <ProductShow />
-            <ProductShow />
+            {products.map((x:any,y:number)=>(<ProductShow 
+                                                          key={y}
+                                                          id={x.codeBar}
+                                                          name={x.name} 
+                                                          price={x.price.current} 
+                                                          oldPrice={x.oldest?.current} 
+                                                          imgProduct={x.catalog.main} 
+                                            />)
+            )}
+             
            </div>
         </section>
       </div>
    
   )
 }
+
+export default  Home
