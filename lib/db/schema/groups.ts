@@ -4,7 +4,7 @@ const {Schema}=require('mongoose');
 const groups=new Schema({
      id:{type:Number,required:true,unique:true},
      name:{type:String,required:true,unique:true},
-     categories:{type:[Number],required:true}
+     categories:[{type:Schema.Types.ObjectId,ref:"categories",required:true}]
 });
 groups.plugin(autoIncrement,{model:"groups",field:"id",startAt:1})
 

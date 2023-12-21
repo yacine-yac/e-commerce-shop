@@ -11,11 +11,11 @@ const order:Schema<Iorder>=new mongoose.Schema({
         required:true,
         unique:true
     },
-    client:{type:Number,required:true},
+    client:{type:Schema.Types.ObjectId,ref:"clients",required:true},
     products:{type:[
                     {
                         quantity:{type:Number,required:true},
-                        product:{type:Number,required:true}
+                        product:{type:Schema.Types.ObjectId,ref:'products',required:true}
                     }
                    ],
                    required:true,

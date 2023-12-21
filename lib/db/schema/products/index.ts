@@ -15,7 +15,7 @@ const products:Schema<Iproduct>=new mongoose.Schema({
      catalog:{type:Catalog,required:true},
      quantity:{type:stock ,required:true},
      price:{type:Price,required:true},
-     domain:{type:[Number],required:true},
-     category:{type:[Number],required:true}
+     domain:[{type:Schema.Types.ObjectId,ref:"domains",required:true}],
+     category:[{type:Schema.Types.ObjectId,ref:"categories",required:true}]
 });
 export default products;
