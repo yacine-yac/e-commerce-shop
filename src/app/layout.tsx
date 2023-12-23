@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import './globals.css'
 import HeaderSection from '@/templates/hearderSection';
 import { useEffect } from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,7 +15,7 @@ const inter = Inter({ subsets: ['latin'] })
 //   title: 'Stop & Shop',
 //   description: 'Stop & Shop created by yacine malki @dev',
 // }
-
+const queryClient=new QueryClient();
 export default function RootLayout({
   children,
 }: {
@@ -56,12 +57,14 @@ export default function RootLayout({
       return currentPath==path ? 'btn-active' : undefined;
   };
   return (
+ 
     <html lang="en">
       <body className={inter.className}>
 
         <HeaderSection eventHandler={backNavigation} state={currentPath.split('/')[1]} />
-     
-        {children}
+        <QueryClientProvider client={queryClient}> 
+            {children}
+        </QueryClientProvider>
         {(currentPath.split('/')[1]!="cart" && currentPath.split('/')[1]!="products") && 
         <footer className='p-bottom'>
             <nav>
@@ -91,5 +94,6 @@ export default function RootLayout({
         }
       </body>
     </html>
+
   )
 }

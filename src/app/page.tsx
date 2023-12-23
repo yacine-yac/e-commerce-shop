@@ -1,13 +1,36 @@
+"use client";
 import { ProductShow } from '@/templates/productShow'
 import Link from 'next/link'
-import './page.css'  
-import Products from '@/model/product/product'
-async function Home(){
-  
-  const p=new Products();
-  const products=await p.get();  
-
+import './page.css'   
+import { useEffect, useState } from 'react'; 
+import { fetching } from '@/model/fetching';
+import {  useQuery  } from 'react-query';  
+function Home(){
+  const [counter,setCounter]=useState(1);
+  const [products,setProducts]=useState<[]>([])
+  const { isLoading,isFetching,isError }=useQuery(
+          ["products",counter],
+          async()=>await fetching(`./api/products?p=${counter}`),
+          { 
+            keepPreviousData:true,
+            onSuccess:(data)=>{ setProducts((x:[])=>[...x,...data?.data])}
+          }
+  ); 
+  useEffect(()=>{ 
+      function scrollHandler(){
+            const current= window.innerHeight + window.pageYOffset; document.documentElement.scrollTop ;
+            const height= document.body.scrollHeight;document.documentElement.offsetHeight;
+            if(current>=height-150){  
+                setCounter(counter+1); 
+            }   
+      }
+      window.onscroll=scrollHandler;
+      return function(){
+               window.removeEventListener("scroll",scrollHandler);
+      }
+  },[products]);
   return (
+    
       <div className="pg pg-1">
         <h2>Hi,Dear</h2>
         <h1>Enjoy shopin on Stop & Shop</h1>
@@ -41,7 +64,8 @@ async function Home(){
         <section className="show">
            <h1>Recommended for you</h1>
            <div className="show-grid">
-            {products.map((x:any,y:number)=>(<ProductShow 
+
+            {products?.map((x:any,y:number)=>(<ProductShow 
                                                           key={y}
                                                           id={x.codeBar}
                                                           name={x.name} 
@@ -50,11 +74,11 @@ async function Home(){
                                                           imgProduct={x.catalog.main} 
                                             />)
             )}
-             
+            {isError && <h1>No product found</h1>}
+            {(isLoading || isFetching) && <h1>Loading...</h1>}   
            </div>
         </section>
-      </div>
-   
+      </div> 
   )
 }
 
