@@ -41,10 +41,15 @@ describe("insert category, domain, group",()=>{
   });   
   test.each(category)("category",async(cat)=>{
         const {categories}= dataSet.models;
-        const m=new categories(cat); 
+        const m=new categories(cat);
         const mm=await m.save();
         expect(mm.name).toBe(cat.name);
-  });  
+  }); 
+  test('select groups',async()=>{
+      const {groups}= dataSet.models;
+      const p=await groups.find().populate("categories");
+      expect(p).toBe({});
+  }); 
 });
 describe.only("product operations",()=>{
    let dataSet:Ids; 

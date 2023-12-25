@@ -6,7 +6,7 @@
         "catalog":{"main":"/shoes.png","videos":[],"pictures":[]},
         "quantity":{"value":10,"oldest":null},
         "price":{"current":3000},
-        "category":[1,2,3,4],
+        "category":["6583fab5e02dc7917926d792","6583fabbe02dc7917926d7a6","6583fabce02dc7917926d7ad","6583fabde02dc7917926d7b2"],
         "domain":[1,2]
     },
     {
@@ -16,8 +16,8 @@
         "catalog":{"main":"shoes.png","videos":[],"pictures":[]},
         "quantity":{"value":90,"oldest":null},
         "price":{"current":1500},
-        "category":[1,2,3],
-        "domain":[1]
+        "category":["6583fab5e02dc7917926d792","6583fabbe02dc7917926d7a6","6583fabce02dc7917926d7ad"],
+        "domain":["6582fc1abd30bb404e496002"]
     },
     {
         "codeBar":"789",
@@ -26,8 +26,8 @@
         "catalog":{"main":"shoes.png","videos":[],"pictures":[]},
         "quantity":{"value":20,"oldest":null},
         "price":{"current":5000},
-        "category":[1,2,3,4],
-        "domain":[1,2]
+        "category":["6583fab5e02dc7917926d792","6583fabce02dc7917926d7ad"],
+        "domain":["6582fc1abd30bb404e496002"]
     },
     {
         "codeBar":"147",
@@ -36,7 +36,107 @@
         "catalog":{"main":"shoes.png","videos":[],"pictures":[]},
         "quantity":{"value":10,"oldest":null},
         "price":{"current":1200},
-        "category":[1,2,3],
-        "domain":[1,2]
+        "category":["6583fab5e02dc7917926d792","6583fabce02dc7917926d7ad"],
+        "domain":["6582fc1abd30bb404e496002"]
+    },
+    {
+        "codeBar":"852",
+        "name":"Pull philipe plein",
+        "description":"use this product ....", 
+        "catalog":{"main":"shoes.png","videos":[],"pictures":[]},
+        "quantity":{"value":60,"oldest":null},
+        "price":{"current":1900},
+        "category":["6583fab5e02dc7917926d792","6583fabce02dc7917926d7ad"],
+        "domain":["6582fc1abd30bb404e496002"]
+    },
+    {
+        "codeBar":"258",
+        "name":"T-shirt nike",
+        "description":"use this product ....", 
+        "catalog":{"main":"shoes.png","videos":[],"pictures":[]},
+        "quantity":{"value":10,"oldest":null},
+        "price":{"current":1200},
+        "category":["6583fab5e02dc7917926d792","6583fabce02dc7917926d7ad"],
+        "domain":["6582fc1abd30bb404e496002"]
+    },
+    {
+        "codeBar":"369",
+        "name":"Zoom nike shoes",
+        "description":"use this product ....", 
+        "catalog":{"main":"shoes.png","videos":[],"pictures":[]},
+        "quantity":{"value":60,"oldest":null},
+        "price":{"current":4000},
+        "category":["6583fab5e02dc7917926d792","6583fabce02dc7917926d7ad"],
+        "domain":["6582fc1abd30bb404e496002"]
+    },
+    {
+        "codeBar":"963",
+        "name":"Jacket Joma",
+        "description":"use this product ....", 
+        "catalog":{"main":"shoes.png","videos":[],"pictures":[]},
+        "quantity":{"value":45,"oldest":null},
+        "price":{"current":600},
+        "category":["6583fab5e02dc7917926d792","6583fabce02dc7917926d7ad"],
+        "domain":["6582fc1abd30bb404e496002"]
+    },
+    {
+        "codeBar":"639",
+        "name":"Chausset Pumma",
+        "description":"use this product ....", 
+        "catalog":{"main":"shoes.png","videos":[],"pictures":[]},
+        "quantity":{"value":10,"oldest":null},
+        "price":{"current":1200},
+        "category":["6583fab5e02dc7917926d792","6583fabce02dc7917926d7ad"],
+        "domain":["6582fc1abd30bb404e496002"]
+    },
+    {
+        "codeBar":"693",
+        "name":"T-shirt adidas",
+        "description":"use this product ....", 
+        "catalog":{"main":"shoes.png","videos":[],"pictures":[]},
+        "quantity":{"value":30,"oldest":null},
+        "price":{"current":1100},
+        "category":["6583fab5e02dc7917926d792","6583fabce02dc7917926d7ad"],
+        "domain":["6582fc1abd30bb404e496002"]
+    },
+    {
+        "codeBar":"666",
+        "name":"Hat original nike",
+        "description":"use this product ....", 
+        "catalog":{"main":"shoes.png","videos":[],"pictures":[]},
+        "quantity":{"value":13,"oldest":null},
+        "price":{"current":1700},
+        "category":["6583fab5e02dc7917926d792","6583fabce02dc7917926d7ad"],
+        "domain":["6582fc1abd30bb404e496002"]
+    },
+    {
+        "codeBar":"555",
+        "name":"T-shirt zoom nike",
+        "description":"use this product ....", 
+        "catalog":{"main":"shoes.png","videos":[],"pictures":[]},
+        "quantity":{"value":140,"oldest":null},
+        "price":{"current":2000},
+        "category":["6583fab5e02dc7917926d792","6583fabce02dc7917926d7ad"],
+        "domain":["6582fc1abd30bb404e496002"]
+    },
+    {
+        "codeBar":"112",
+        "name":"Jacket original adidas",
+        "description":"use this product ....", 
+        "catalog":{"main":"shoes.png","videos":[],"pictures":[]},
+        "quantity":{"value":4,"oldest":null},
+        "price":{"current":4000},
+        "category":["6583fab5e02dc7917926d792","6583fabce02dc7917926d7ad"],
+        "domain":["6582fc1abd30bb404e496002"]
+    },
+    {
+        "codeBar":"113",
+        "name":"Pull adidas original",
+        "description":"use this product ....", 
+        "catalog":{"main":"shoes.png","videos":[],"pictures":[]},
+        "quantity":{"value":25,"oldest":null},
+        "price":{"current":2300},
+        "category":["6583fab5e02dc7917926d792","6583fabce02dc7917926d7ad"],
+        "domain":["6582fc1abd30bb404e496002"]
     }
 ]
