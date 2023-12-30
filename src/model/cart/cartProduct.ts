@@ -1,28 +1,28 @@
+import { Icatalog } from "../../../lib/models/catalog";
+import { Icategory } from "../../../lib/models/category";
 import { Iprice } from "../../../lib/models/prices";
 import { Iproduct } from "../../../lib/models/products";
 
 class CartProduct{
-    private codeBar:string;
+    public codeBar:string;
     public quantity:number;
     public price:Iprice;
     public name:string;
-    public category:number;
-    constructor(codeBar:string,name:string,category:number,quantity:number,price:Iprice){
+    public category:Icategory;
+    public catalog:Icatalog;
+    public total:number;
+    constructor(codeBar:string,name:string,category:Icategory,quantity:number,price:Iprice,catalog:Icatalog){
         this.codeBar=codeBar
         this.name=name;
         this.price=price;
         this.quantity=quantity;
         this.category=category;
-    }
-    getCodeBar(){
-        return this.codeBar;
-    }
+        this.catalog=catalog;
+        this.total=quantity*price.current;
+    } 
     setQuantity(q:number){
         this.quantity=q;
-    }
-    setCategory(category:number){
-        this.category=category;
-    }
+    } 
     getTotalByProduct(){
         return this.quantity*this.price.current;
     }
