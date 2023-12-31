@@ -2,7 +2,7 @@
 import { CartProduct } from "@/model/cart/cartProduct";
 import "./page.css";
 import {  useCart } from "@/hooks/cart"; 
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react"; 
 import { Iprice } from "../../../lib/models/prices";
 import { Icatalog } from "../../../lib/models/catalog";
@@ -15,11 +15,12 @@ type TproductCart={
     quantity: number;
     price: Iprice;
     catalog:Icatalog;
-};let j=0;
-export default function CartPage(){j++;
+};
+export default function CartPage(){
     const [selectedProduct,setSelectedProduct]=useState(0);
     const params:TproductCart=JSON.parse(useSearchParams().get('product') as string); 
     const {cart,items,total,isEmpty,isLoading,setCart,exists,add}=useCart(); 
+    const router=useRouter();
     const increseQuantity=()=>{
         const m= items[selectedProduct].quantity=items[selectedProduct].quantity+1;
         setCart({...cart,items:items});
@@ -30,7 +31,9 @@ export default function CartPage(){j++;
             setCart({...cart,items})
         }
     } 
-
+    const confirmOrder=()=>{
+        router.push('/cart/confirm');
+    }
     useEffect(()=>{
                 if(params && !exists(params.codeBar)){
                     const {codeBar,name,selectedCategory,quantity,price,catalog}=params;
@@ -77,7 +80,7 @@ export default function CartPage(){j++;
                         <h3>Items</h3>
                         <h1>{items.reduce((prev,current)=>prev+current.quantity,0)}</h1>
                     </section>
-                    <button type="button">Confirmed order</button>
+                    <button onClick={confirmOrder} type="button">Confirmed order</button>
                     <span>Included delivery price {cart.delivery} Dzd</span>
                 </div>
            </div>  
