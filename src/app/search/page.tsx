@@ -2,12 +2,36 @@
 import { ProductShow } from "@/templates/productShow"
 import "./page.css"
 import { useState } from "react";
-import { FilterSideList } from "@/templates/filterlistside";
+import { FilterSideList } from "@/templates/filterlistside"; 
+import { useQuery } from "react-query";
+import axios from "axios";
+import { Icategory } from "../../../lib/models/category";
+export type TfilterState={value:string} | {domaine:string[]} | {categorie:string[]} | {price:{min:number,max:number}}
+export type Tfilters ={
+    value: string;
+    domaine: string[];
+    categorie: string[];
+    price: {
+        min: number;
+        max: number;
+    };
+}
+const initState:Tfilters={value:"",domaine:[],categorie:[],price:{max:0,min:0}};
 export default function Search(){
+    const [state,setState]=useState<Tfilters>(initState);
     const [stateFilter,setStateFilter]=useState(false);
-    const filtersShow=()=>{setStateFilter(!stateFilter);};
+    const {data,isLoading,isError}=useQuery('filters',async()=>await axios.get('/api/filters'));
+    const filtersShow=()=>{setStateFilter(!stateFilter);}
+    const handleFilters=(data:TfilterState)=>{setState({...state,...data})}
+    const domaines=data?.data.domaines.map((x:any)=>{ return {id:x?._id,value:x.name,state:false}});
+    const categories=data?.data.categories.map((x:any)=>{ return {id:x?._id,value:x.name,state:false} });
+    console.log(state,"eee")
     return <>
-           {stateFilter && <FilterSideList filtersShow={filtersShow} />}
+           {stateFilter &&
+                            (!isLoading  &&  <FilterSideList state={state} domaines={domaines} categories={categories} setFilter={handleFilters} filtersShow={filtersShow} />
+                            )
+            }
+
             <div className="pg pg-2">
                 <section className="center" id="search">
                     <form>
@@ -20,12 +44,12 @@ export default function Search(){
                 </section>
                 <h2>Search result 12 items</h2>
                 <div className="show-grid">
+                    {/* <ProductShow />
                     <ProductShow />
                     <ProductShow />
                     <ProductShow />
                     <ProductShow />
-                    <ProductShow />
-                    <ProductShow />
+                    <ProductShow /> */}
                 </div>
             </div>
     </>
