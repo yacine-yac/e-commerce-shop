@@ -4,24 +4,36 @@ import Link from 'next/link'
 import './page.css'   
 import { useEffect, useState } from 'react'; 
 import { fetching } from '@/model/fetching';
-import {  useQuery  } from 'react-query';  
+import {  useQuery,useQueries } from 'react-query';  
+import axios, { AxiosResponse } from 'axios';
+import { useSearchParams } from 'next/navigation';
 function Home(){
-  const [counter,setCounter]=useState(1);
+  const [queryParams,setQueryParams]=useState<{counter:number,domaine:undefined | string}>({counter:1,domaine:undefined});
   const [products,setProducts]=useState<[]>([])
-  const { isLoading,isFetching,isError }=useQuery(
-          ["products",counter],
-          async()=>await fetching(`./api/products?p=${counter}`),
-          { 
-            keepPreviousData:true,
-            onSuccess:(data)=>{ setProducts((x:[])=>[...x,...data?.data])}
-          }
-  ); 
+  const params=useSearchParams();
+  const domaineFilter=params.get("domaine") ?? undefined;
+  const [domaines,prod]:[any,any]=useQueries([
+                  { 
+                    queryKey:["domaines"],
+                    queryFn:async()=>await fetching("/api/filters/domaines")
+                  },
+                  { 
+                    queryKey:["products",queryParams],
+                    queryFn:async()=>await fetching(`./api/products`,{...(queryParams?.domaine && {domaine:queryParams.domaine}),p:queryParams.counter}),
+                    keepPreviousData:true,
+                    onSuccess:(data:AxiosResponse<[], any>)=>{ setProducts((x:[] )=> [...x,...data?.data])}
+                  } 
+  ]);
+  const handleDomaine=(value?:string)=>{
+        setQueryParams({counter:1,domaine:value});
+        setProducts([])
+  }
   useEffect(()=>{ 
       function scrollHandler(){
             const current= window.innerHeight + window.pageYOffset; document.documentElement.scrollTop ;
             const height= document.body.scrollHeight;document.documentElement.offsetHeight;
             if(current>=height-150){  
-                setCounter(counter+1); 
+                setQueryParams({...queryParams,counter:queryParams.counter+1}); 
             }   
       }
       window.onscroll=scrollHandler;
@@ -54,28 +66,30 @@ function Home(){
             </div>
         </section> 
         <section className='domain'>
-            <span className='center btn-background-active'><Link  href="">All</Link></span>
-            <span className='center'><Link  href="">Shows & clothes</Link></span>
-            <span className='center'><Link  href="">Pc & phones</Link></span>
-            <span className='center'><Link  href="">Beauty</Link></span>
-            <span className='center'><Link  href="">Food</Link></span>
-            <span className='center'><Link  href="">Energy</Link></span>
+          {domaines.isLoading ? 
+                              <h1>Loading...</h1>
+                              : 
+                              <>
+                                <span onClick={()=>handleDomaine()} className={`center ${queryParams.domaine== undefined && "btn-background-active"}`}><Link  href="">All</Link></span>
+                                {domaines.data?.data?.values.map((x:any,y:number)=> <span key={y} onClick={()=>handleDomaine(x.name)} className={`center ${queryParams.domaine==x.name && "btn-background-active"}`}>{x.name}</span>)}
+                              </>
+          }
         </section>
         <section className="show">
            <h1>Recommended for you</h1>
            <div className="show-grid">
 
-            {products?.map((x:any,y:number)=>(<ProductShow 
-                                                          key={y}
-                                                          id={x.codeBar}
-                                                          name={x.name} 
-                                                          price={x.price.current} 
-                                                          oldPrice={x.oldest?.current} 
-                                                          imgProduct={x.catalog.main} 
-                                            />)
-            )}
-            {isError && <h1>No product found</h1>}
-            {(isLoading || isFetching) && <h1>Loading...</h1>}   
+          {products?.map((x:any,y:number)=>(<ProductShow 
+                                                        key={y}
+                                                        id={x.codeBar}
+                                                        name={x.name} 
+                                                        price={x.price.current} 
+                                                        oldPrice={x.oldest?.current} 
+                                                        imgProduct={x.catalog.main} 
+                                          />)
+          )}
+          {prod.isError && <h1>No product found</h1>}
+          {(prod.isLoading || prod.isFetching) && <h1>Loading...</h1>}   
            </div>
         </section>
       </div> 
