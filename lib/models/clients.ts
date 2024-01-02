@@ -3,7 +3,7 @@ export interface Iclient{
     firstName:string;
     order:number[],
     contact:{
-        address:string,
+        address:{province:string,city:string,street:string},
         email:string
         phone:string,
         phone2?:string

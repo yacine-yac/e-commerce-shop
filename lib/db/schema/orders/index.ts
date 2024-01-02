@@ -3,7 +3,8 @@ import { orderTypes } from "../../configurations/types";
 import { Iorder, IorderState } from "../../../models/orders";
 import { Schema} from "mongoose";
 import GlobalState from "./globalState";
-
+import { Clients } from "..";
+import { mdb } from "..";
 const mongoose=require('mongoose');
 const order:Schema<Iorder>=new mongoose.Schema({
     orderNumber:{
@@ -45,4 +46,8 @@ order.methods={
     
 
 };
+order.post("save",async function(doc:any){
+        // const {clients}=mdb.models;
+        await Clients.findOneAndUpdate({_id:doc.client},{$push:{orders:doc._id}});
+});
 export default order;

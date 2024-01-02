@@ -1,4 +1,5 @@
 import { Icatalog } from "./catalog";
+import { Icategory } from "./category";
 import { Iprice } from "./prices";
 import { Istock } from "./stock";
 
@@ -9,6 +10,6 @@ export interface Iproduct{
      catalog:Icatalog;
      price:Iprice;
      quantity:Istock;
-     domain:number[];
-     category:number[];
+     domain:string[];
+     category:Icategory[];
 }
