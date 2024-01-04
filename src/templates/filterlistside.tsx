@@ -6,29 +6,16 @@ import { TfilterState, Tfilters } from "@/app/search/page";
 import { Idomain } from "../../lib/models/domain"; 
 import { Icategory } from "../../lib/models/category";
 type TfilterSide={state:Tfilters,domaines:{id:string,value:string}[],categories:{id:string,value:string}[],filtersShow:()=>void,setFilter:(data: TfilterState)=>void}
-export function FilterSideList({state,domaines,categories, filtersShow,setFilter}:TfilterSide){
-    const [lists,setLists]=useState({domaines,categories})
+export function FilterSideList({state,domaines,categories, filtersShow,setFilter}:TfilterSide){ 
     const handler=function(e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>){
                  (e.nativeEvent.target as HTMLDivElement)?.id =="filter" && filtersShow()
     };
-    const handleDomaines=(id:string)=>{
-        const index=state.domaine.findIndex(x=>x==id);
-        if(index!=-1){
-            state.domaine.splice(index,1);   
-            setFilter({...state}) 
-        }else{
-            setFilter({domaine:[...state.domaine,id]})
-        } 
+    const handleDomaines=(id?:any)=>{
+        setFilter({...state,domaine:id ?? ""})
     };
-    const handleCategories=(id:string)=>{
-         const index=state.categorie.findIndex(x=>x==id);
-         if(index!=-1){
-            state.categorie.splice(index,1);
-            setFilter({...state})
-         }else{
-            setFilter({categorie:[...state.categorie,id]}) 
-         }
-    };
+    const handleCategories=(id?:any)=>{
+         setFilter({...state,category:id ?? ""})
+    }; 
     return <>
             <div id="filter" className="center-h" onClick={handler}>
                 <section className="p-bottom">
@@ -55,9 +42,9 @@ export function FilterSideList({state,domaines,categories, filtersShow,setFilter
                         <h2>Domaine</h2>
                         <div></div>
                         <div className="f-btns">
-                                <button className="btn-active-ground" type="button">All</button> 
+                                <button onClick={()=>handleDomaines()} className={state.domaine=="" ? "btn-active-ground":undefined} type="button">All</button> 
                                 {domaines.map((x,y)=>{ 
-                                    return  (<button   onClick={()=>handleDomaines(x.id)} className={ state.domaine.includes(x.id) ? "btn-active-ground":undefined} key={y} type="button">{x.value}</button>)
+                                    return  (<button   onClick={()=>handleDomaines(x.id)} className={ state.domaine==x.id ? "btn-active-ground":undefined} key={y} type="button">{x.value}</button>)
                                 })}
                         </div>
                     </div>
@@ -65,8 +52,8 @@ export function FilterSideList({state,domaines,categories, filtersShow,setFilter
                         <h2>Categories</h2>
                         <div></div>
                         <div className="f-btns">
-                                <button className="btn-active-ground" type="button">1L</button> 
-                                {categories.map((x,y)=><button className={state.categorie.includes(x.id) ? "btn-active-ground" :undefined} onClick={()=>handleCategories(x.id)} key={y}  type="button">{x.value}</button>)  }
+                                <button onClick={()=>handleCategories()} className={state.category=="" ? "btn-active-ground" : undefined} type="button">1L</button> 
+                               {categories.map((x,y)=><button className={state.category==x.id ? "btn-active-ground" :undefined} onClick={()=>handleCategories(x.id)} key={y}  type="button">{x.value}</button>)  }
                         </div>
                     </div>
                 </section>
