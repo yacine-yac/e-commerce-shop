@@ -19,7 +19,7 @@ function Home(){
                   },
                   { 
                     queryKey:["products",queryParams],
-                    queryFn:async()=>await fetching(`./api/products`,{...(queryParams?.domaine && {domaine:queryParams.domaine}),p:queryParams.counter}),
+                    queryFn:async()=>await fetching(queryParams?.domaine ? `/api/products/domaine/${queryParams.domaine}` : `./api/products` ,{p:queryParams.counter}),
                     keepPreviousData:true,
                     onSuccess:(data:AxiosResponse<[], any>)=>{ setProducts((x:[] )=> [...x,...data?.data])}
                   } 
@@ -65,7 +65,7 @@ function Home(){
               </span>
             </div>
         </section> 
-        <section className='domain'>
+        <section className='domain scrolling'>
           {domaines.isLoading ? 
                               <h1>Loading...</h1>
                               : 
