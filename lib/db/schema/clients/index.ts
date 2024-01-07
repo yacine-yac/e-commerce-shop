@@ -1,10 +1,8 @@
+import { Schema } from "mongoose";
 import { Iclient } from "../../../models/clients";
-import contact from "./contact";
-import { autoIncrement } from "mongoose-plugin-autoinc";
-const {Schema}=require('mongoose'); 
+import contact from "./contact"; 
 
-const client =new Schema({
-    id:{type:Number,unique:true,required:true},
+const client:Schema<Iclient>=new Schema({
     lastName:{type:String,required:true},
     firstName:{type:String,required:true},
     orders:[{type:Schema.Types.ObjectId,ref:"orders",required:true}],
@@ -17,5 +15,4 @@ client.methods={
     }
 }
 
-client.plugin(autoIncrement,{model:"clients",field:"id",startAt:78549})
 export default client;

@@ -1,6 +1,6 @@
 
 const contact={
-    adress:{
+    address:{
         type:{
             province:String,
             city:String,
