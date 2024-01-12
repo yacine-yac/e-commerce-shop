@@ -29,10 +29,11 @@ describe("insert category, domain, group",()=>{
 /** ============================================== tests ====================================================== */
   
   
-  test("domain",async()=>{
+  test.each(domain)("domain",async(dom)=>{
          const {domains}= dataSet.models;
-         const m= await domains.insertMany(domain); 
-         expect((await m).length).toBe(3);
+         const m= new domains(dom); 
+         const mm= await m.save();
+         expect (mm._id).toBeDefined();
   });
   test("group",async()=>{
         const {groups}= dataSet.models;
@@ -51,7 +52,7 @@ describe("insert category, domain, group",()=>{
       expect(p).toBe({});
   }); 
 });
-describe.only("product operations",()=>{
+describe("product operations",()=>{
    let dataSet:Ids; 
    beforeAll(async () => {
      dataSet =await DataSet(); 
@@ -68,7 +69,7 @@ describe.only("product operations",()=>{
 
     
 
-   it.only.each(product)("products insert",async(pro)=>{  
+    it.each(product)("products insert",async(pro)=>{  
       const {products}= dataSet.models
       // Products
       const r=new Products(pro);
@@ -127,7 +128,7 @@ describe("client operations",()=>{
 
   });
 
-  it.each(client)("insert clients",async(customer)=>{
+  it.only.each(client)("insert clients",async(customer)=>{
          const {clients}=dataSet.models;
          const cl=new clients(customer);
          await cl.save();
@@ -155,7 +156,6 @@ describe("orders operations",()=>{
   })
   
   test.each(orderObject)('insert order',async(ord)=>{
-       
           ord.orderNumber=await GlobalState.generate();
           const {orders}=dataSet.models;
           const order=new orders(ord);   

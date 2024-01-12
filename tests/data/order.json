@@ -1,9 +1,9 @@
 [
             { 
                             "orderNumber":"",
-                            "client":16,
-                            "products":[{"quantity":1,"product":456}],
-                            "total":2000,
+                            "client":"6598624a8c14a608b260182e",
+                            "products":[{"quantity":1,"product":"6592e9bc906ef9dcc9702e28"}],
+                            "total":2800,
                             "deliveryPrice":500,
                             "state":{
                                 "current":"order"  
@@ -11,9 +11,9 @@
             },
             { 
                             "orderNumber":"",
-                            "client":17,
-                            "products":[{"quantity":2,"product":123}],
-                            "total":6200,
+                            "client":"6598624a8c14a608b260182e",
+                            "products":[{"quantity":2,"product":"6592e9bc906ef9dcc9702e28"}],
+                            "total":6800,
                             "deliveryPrice":200,
                             "state":{
                                 "current":"order"  

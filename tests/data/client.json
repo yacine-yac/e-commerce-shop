@@ -2,21 +2,29 @@
     {
         "lastName":"yacine",
         "firstName":"malki",
-        "order":[],
+        "orders":[],
         "contact":{
                 "phone":"0795718803",
-                "adress":"dfsfsdfsdfs",
-                "email":"yacine@gmail.com"
+                "email":"yacine@gmail.com",
+                "address":{
+                    "province":"Alger",
+                    "city":"herache",
+                    "street":"dfsfsdfsdfs"
+                }
         }
     },
     {
         "lastName":"amine",
         "firstName":"mahoui",
-        "order":[],
+        "orders":[],
         "contact":{
                 "phone":"0652356695",
-                "adress":"dfsfsdfsdfs",
-                "email":"amine@gmail.com"
+                "email":"amine@gmail.com",
+                "address":{
+                    "province":"Tlemcen",
+                    "city":"imama",
+                    "street":"d gggjuuu lkhkhj"
+                }
         }
     }
 ]

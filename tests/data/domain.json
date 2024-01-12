@@ -1,14 +1,14 @@
 [
     {
-        "name":"colthes & shoes",
-        "product":[]
+        "name":"colthes and shoes",
+        "products":[]
     },
     {
-        "name":"pc & mobile",
-        "product":[]
+        "name":"pc and mobile",
+        "products":[]
     },
     {
         "name":"food",
-        "product":[]
+        "products":[]
     }
 ]
