@@ -1,10 +1,10 @@
 import { useCart } from "@/hooks/cart";
 import Link from "next/link";
-
+import "./style/footerNav.css";
 export default function FooterNavbar({linkActive}:{linkActive:(path: string) => string | undefined}){
     const {items,isEmpty}=useCart()
     return <>
-                  <footer className='p-bottom'>
+                  <footer className='p-bottom center'>
              <nav>
                   <span className={linkActive("/")}>
                        <Link className='center' href="/">
