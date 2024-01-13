@@ -1,0 +1,8 @@
+/* skeleton*/
+.shape{
+    /* background-color: var(--icons-color) !important; */
+
+    animation: coloring 2s ease infinite;
+    border-radius: 15px; 
+    
+}
