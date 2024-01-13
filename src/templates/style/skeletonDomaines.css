@@ -1,0 +1,12 @@
+@media(max-width:576px){
+    .skeleton-domaine{
+        width:38% !important;height:35px;border:0px,
+
+    }
+}
+@media(min-width:576px){
+    .skeleton-domaine{
+        width:20% !important;height:35px;border:0px,
+
+    }
+}
