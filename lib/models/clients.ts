@@ -1,7 +1,7 @@
 export interface Iclient{
     lastName:string;
     firstName:string;
-    order:number[],
+    orders:string[],
     contact:{
         address:{province:string,city:string,street:string},
         email:string

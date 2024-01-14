@@ -4,6 +4,7 @@ import { Iprice } from "./prices";
 import { Istock } from "./stock";
 
 export interface Iproduct{
+     _id:string;
      codeBar:string;
      name:string;
      description:string;

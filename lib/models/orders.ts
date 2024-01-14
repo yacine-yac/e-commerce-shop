@@ -1,11 +1,11 @@
 export interface IorderState{
     current:string,
     description?:string,
-    history:IorderState
+    history?:IorderState
 }
 export interface Iorder{
     orderNumber:string,
-    client:number,
+    client:string,
     products:{quantity:number,product:number}[],
     total:number,
     deliveryPrice:number,
