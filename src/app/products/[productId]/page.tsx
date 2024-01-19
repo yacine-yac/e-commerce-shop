@@ -6,20 +6,16 @@ import ProductPage from "@/templates/productPage";
  
 
 export default async function Product({params}:{params:{productId:string}}){ 
-        // const {data,isLoading,isError}=useQuery("product",async()=>axios.get(`/api/products/${params.productId}`));  
-         
-        const product:Iproduct=await Products.findOne({codeBar:params.productId}).populate("category");
-       
-          {/* <ProductDetails/>  */}
-                                        
-        return   product  ?    
-                               <ProductPage product={JSON.stringify(product)} >
-                                         <ProductDetails product={product} />
-                                </ProductPage>
-                           
-                                
-                         :    <h1>product not found {params.productId} </h1>;
-               
-                        
-    
+      const product:Iproduct=await Products.findOne({codeBar:params.productId}).populate("category");
+      
+      return  <>{
+                        product  ?    
+                                <>
+                                  <ProductPage product={JSON.stringify(product)} >
+                                            <ProductDetails product={product} />
+                                  </ProductPage>
+                                </>
+                              
+                                : <h1>product not found {params.productId} </h1>
+      }</> 
 }     
