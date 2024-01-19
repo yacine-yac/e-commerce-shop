@@ -7,6 +7,9 @@ import { useQuery,useQueries,useQueryClient } from "react-query";
 import axios, { AxiosResponse } from "axios";
 import { Icategory } from "../../../lib/models/category";
 import { fetching } from "@/model/fetching";
+import { SkeletonProduct } from "@/templates/productSkeleton";
+import HeaderSection from "@/templates/hearderSection";
+import FooterNavbar from "@/templates/footerNavbar";
 export type TfilterState={value:string} | {domaine:string} | {category:string} | {price:{min:number,max:number}}
 export type Tfilters ={
     value: string;
@@ -63,8 +66,9 @@ export default function Search(){
                             (!filters.isLoading  &&  <FilterSideList state={state} domaines={domaines} categories={categories} setFilter={handleFilters} filtersShow={filtersShow} />
                             )
             }
-
-            <div className="pg pg-2">
+        <>
+            <HeaderSection  title="Search" />
+            <div className="pg pg-2 center">
                 <section className="center" id="search">
                     <form>
                             <button onClick={handleSubmit} type="submit"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Interface / Search_Magnifying_Glass"> <path id="Vector" d="M15 15L21 21M10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10C17 13.866 13.866 17 10 17Z" stroke="#4c5358" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g> </g></svg></button>
@@ -75,12 +79,17 @@ export default function Search(){
                     </button>
                 </section>
                 {products.isFetched && <h2>Search result {products?.data?.data.length} items</h2>}
+                { (loading || products.isFetched) &&
                 <div className="show-grid">
                     {products?.data?.data.map((x:any,y:number)=>  <ProductShow key={y} id={x.codeBar}  name={x.name} price={x.price.current} oldPrice={x.price.oldest?.current} imgProduct={x.catalog.main}  />
                     )}
-                    {loading && <h1>Loading</h1>}
-                    {noData  && <h1>you can search for a specific product</h1>}
-                </div>
+                    {loading && <SkeletonProduct />} 
+                </div>  
+                }
+                {noData && <div className="illus center"><img src="/illustration/search.svg" /></div>}
+                    
             </div>
+        </>
+        <FooterNavbar />
     </>
 }
