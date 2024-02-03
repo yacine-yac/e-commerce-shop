@@ -1,0 +1,18 @@
+header{
+    background-color: var(--primary-background) !important;
+    width:100%;height: 10vh;
+    top: 0%;position: fixed;
+    z-index: 30; 
+}
+header .profil{
+    width: 40px;height: 40px;border-radius: 50%; margin: 0% 3%;
+}
+header .profil{
+    margin-left: auto;
+    background-color: rgb(244, 249, 255); 
+    box-shadow: 0px 0px 3.5px rgb(80, 83, 92);  
+    cursor:pointer;
+}
+header .profil img{
+    width: 90%;height:90%;
+}
