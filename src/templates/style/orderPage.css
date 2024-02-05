@@ -1,0 +1,96 @@
+@media(max-width:576px){
+    .dash-o{
+        width: 100%;height: auto; min-height: 90vh;
+        margin-top: 10vh;
+    }
+    .dash-o .dash-ob{width:100%;height: 60px;margin-top: 8px; padding: 0% 2%;}
+    .dash-o .dash-ob h1{font-size: 0.9rem;width: 50%; color: var(--icons-color);}
+
+    .dash-o .dash-ob h3{font-size: 0.55rem;width: 40%; }
+    .dash-o .dash-j{width:100%;height: 30vh;margin: 8px 0%; }
+    .dash-o .dash-j > div:nth-child(1){width: 100%;height: 35%;padding: 3% ;} 
+    .dash-o .dash-j > div:nth-child(1) span{
+        font-size: 0.8rem;width: 65%;
+    }
+    .dash-o .dash-j > div:nth-child(1) span a{
+        width: 100%;border: 0px solid yellow;
+        display: grid;
+        grid-template-columns: 0.15fr 1fr;
+        grid-template-rows: 0.8fr 1fr;
+        row-gap: 0px;column-gap: 5px;
+    }
+    .dash-o .dash-j > div:nth-child(1) span h1{
+        font-size: 1rem;width: 40px;height: 40px;border-radius: 50%;
+    }
+    .dash-o .dash-j > div:nth-child(1) span label{
+        font-size: 0.8rem;
+    }
+    .dash-o .dash-j > div:nth-child(1) span label:nth-child(3){
+        font-size: 0.5rem; 
+    }
+    .dash-o .dash-j > div:nth-child(2){width: 100%;height: 65%;}
+    .dash-o .dash-j > div:nth-child(2) section{width: 50%;height: 80%;margin-left: 8%;padding-left: 1%;gap: 5px;}
+    .dash-o .dash-j > div:nth-child(2) section label{width: 90%;height: 25%; font-size: 0.6rem;border: 0px solid red;}
+    .dash-o .dash-j > div:nth-child(2) section label svg{width: 10%;height: 100%; font-size: 0.6rem;border: 0px solid blue;}
+    .dash-o .dash-j > div:nth-child(2) section button{width: 80%;height: 30%; border-radius:5px;}
+    .dash-o .dash-z{width: 100%;height: 27vh;padding: 5% 8%;}
+    .dash-o .dash-z h1{font-size: 0.6rem;}
+    .dash-o .dash-z section{width: 100%;height: 80%;margin-top: 1%;row-gap: 5px;}
+    .dash-o .dash-z section h2{font-size: 0.8rem; border: 0px solid red;}
+    .dash-o .dash-z section h3{font-size: 0.55rem;margin-left: auto;}
+    .dash-o .dash-p{width: 100%;height: auto;margin: 8px 0px;}
+    .dash-o .dash-p h1{font-size: 0.8rem;}
+    .dash-o .dash-p button{width:35px;height: 35px;border-radius: 50%;margin-right: 5%;}
+    .dash-o .dash-p button svg{width:80%;height: 90%;}
+    .dash-o .dash-p > div{width: 100%;height: 0px;border: 1px solid red;}
+} 
+.dash-o{ 
+   border: 0px solid black;background-color: rgba(238, 242, 245, 0.952);
+   flex-direction: column;
+}
+/* .dash-o .dash-ob{ background-color: var(--primary-background);} */
+.dash-o .dash-ob{ background-color: var(--secondary-background);flex-direction: row;}
+.dash-o .dash-ob h1{color: var(--icons-color);}
+.dash-o .dash-ob h3{margin-left: auto;text-align:right;align-content: center; color: var(--icons-color);opacity: 0.8;}
+.dash-o .dash-j{background-color: var(--secondary-background);}
+
+.dash-o .dash-j > div:nth-child(1){border: 0px solid red;} 
+.dash-o .dash-j > div:nth-child(1) span{
+    /* display: grid;
+    grid-template-columns: 1fr 1fr; */
+    border: 0px solid rgb(29, 45, 187) !important;
+display: flex;
+}
+.dash-o .dash-j > div:nth-child(1) span h1{
+        background-color: var(--primary-background);
+        /* background-color: var(--icons-color); */
+        color: var(--secondary-background);
+        grid-row:1/-1;
+        box-shadow: 0px 0px 2px rgb(93, 96, 100) , 0px 0px 2px rgb(228, 229, 233);
+}
+.dash-o .dash-j > div:nth-child(2) {border: 0px solid rgb(48, 51, 54);background-color: transparent;} 
+.dash-o .dash-j > div:nth-child(2) section{
+    border-left: 3px solid rgb(79, 87, 94);flex-direction: column;display: flex;
+    
+}
+.dash-o .dash-j > div:nth-child(2) section button{color: var(--secondary-background);background-color: var(--primary-background);}
+.dash-o .dash-z{
+    background-color: var(--secondary-background);
+}
+.dash-o .dash-z section{border: 0px solid black;display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
+}
+.dash-o .dash-z section h2{color: var(--icons-color);}
+.dash-o .dash-z section h3{color: var(--icons-color);opacity: 0.8;}
+.dash-o .dash-p{background-color: var(--secondary-background);
+        display: grid;
+        grid-template-columns: 0.5fr 1fr;
+        grid-template-rows: 0.4fr 1fr;
+}
+.dash-o .dash-p h1{place-self: center;}
+.dash-o .dash-p button{place-self:  center end;}
+.dash-o .dash-p > div{ border: 1px solid red; grid-column: 1/-1;}
+
+
+
