@@ -1,0 +1,101 @@
+@media(max-width:576px){
+    .itm{
+        width: 100%;height: auto; min-height:80px;   border-radius: 5px;
+        grid-template-columns: 3fr 1fr;
+        grid-template-rows: 0.5fr 1fr;
+        position: relative;z-index: 5;
+        overflow: hidden; 
+    }
+    .itm h1{ font-size: 0.8rem; padding: 0% 1% 0% 2%;}
+    .itm h2{
+        padding: 2% 2%;
+        font-size: 0.9rem;
+    }
+    .itm > p{
+        font-size: 0.5rem;margin-top: -2%;padding: 0% 1% 0% 2%;
+    }
+    .itm > button{
+        width: 25px; height: 25px;border-radius: 50%;margin: 0% 8%;
+    }
+    .itm button svg{
+        height: 90%;width: 100%;
+    }
+    .itm > div{
+        width: 100%; height: 0px;grid-column: 1/-1;
+        grid-template-rows: 2fr 1fr;grid-template-columns: 3fr 1fr; 
+        /* transform: translateY(100%); */
+        /* z-index: 2;position: absolute; */
+    }
+    .itm > div >section{
+        width: 80%;height: 70%;margin:5% 10%; padding: 1%;gap: 5px; 
+    }
+    .itm > div >section label{
+       font-size: 0.5rem; width: 100%;
+    }
+    .itm > div > section button{
+        color: var(--secondary-background);
+        width: 60%;height: 30px;border-radius: 5px;
+    }
+    .itm > div >section label svg{
+       width: 25px;height:20px;
+    }
+    .itm > div > p{width: 80%;height: 50%;font-size: 0.8rem;}
+    .itm > div > button{ 
+         margin: 0% 5%;font-size: 0.6rem;
+    }
+}
+.itm{
+    display: grid;
+    box-shadow:0px 0px 3px   rgb(45, 48, 58);
+    position: relative;
+    background-color: var(--secondary-background);
+ }
+.itm h1{
+     border: 0px solid black; 
+ }
+.itm h2{ 
+     border: 0px solid black;
+     text-align: center;
+     color: var(--primary-background);
+ }
+.itm > p{ 
+     border: 0px solid rgb(0, 132, 255);
+ }
+.itm > button{ 
+     background-color: rgba(183, 200, 204, 0.938);
+     place-self: center end;
+     
+ }
+.itm button svg{ 
+     border: 0px solid red;
+ }
+.itm > div{ 
+    background-color: rgba(183, 200, 204, 0.938);
+     display: grid;
+ }
+.itm > div >section {
+     border-left: 3px solid rgb(106, 132, 148);grid-row: 1/-1;
+     display: flex;flex-direction: column;
+ }
+.itm > div > section label{
+    text-align: left;border:0px solid red;
+    color: var(--icons-color);
+ }
+.itm > div > section button{
+     color: var(--secondary-background);
+     background-color: var(--primary-background);
+ 
+ }
+.itm > div > p{
+     border: 0px solid red;
+     color: var(--icons-color);
+     place-self: center;
+     text-align: center;
+ }
+.itm > div > button{
+     place-self: center ;
+     border: 0x solid rgb(0, 153, 255);
+     background-color: transparent;
+     color: var(--icons-color);opacity: 0.8;
+ }
+ .cls-1{fill:none;stroke:#4c5358;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}
