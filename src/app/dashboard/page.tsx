@@ -1,12 +1,13 @@
 "use client"
 import Link from "next/link";
 import "./page.css";
-import {Order} from "@/templates/order";
+import "../../templates/style/order.css";
+import {Order} from "@/templates/order"; 
 const style1={transform:"translate(0, 0px)", opacity:1}
 const style2={transform:"rotate(180deg)", transition:" 0.3s"}
 export default function (){
     return <>
-      <header></header>
+     
       <div className="dash-1 center-v">
         <div className="dash-t">
            <img src="/illustration/wave.svg" />
@@ -22,7 +23,7 @@ export default function (){
         <div className="dash-b">
             <div>
                 <h1>Orders details</h1> 
-                <span className="center">View all</span>
+                <span className="center"><Link href={"/dashboard/orders"}>View all</Link></span>
             </div>
             <div className="scrolling">
                   {/* <svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#fff"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fillRule="evenodd" clipRule="evenodd" d="M13 3C13 2.44772 12.5523 2 12 2C11.4477 2 11 2.44772 11 3V3.5582C7.10482 4.01469 4.01469 7.10482 3.5582 11H3C2.44772 11 2 11.4477 2 12C2 12.5523 2.44772 13 3 13H3.5582C4.01469 16.8952 7.10482 19.9853 11 20.4418V21C11 21.5523 11.4477 22 12 22C12.5523 22 13 21.5523 13 21V20.4418C16.8952 19.9853 19.9853 16.8952 20.4418 13H21C21.5523 13 22 12.5523 22 12C22 11.4477 21.5523 11 21 11H20.4418C19.9853 7.10482 16.8952 4.01469 13 3.5582V3ZM11 5.57645V7C11 7.55228 11.4477 8 12 8C12.5523 8 13 7.55228 13 7V5.57645C15.7891 6.00712 17.9929 8.21088 18.4236 11H17C16.4477 11 16 11.4477 16 12C16 12.5523 16.4477 13 17 13H18.4236C17.9929 15.7891 15.7891 17.9929 13 18.4236V17C13 16.4477 12.5523 16 12 16C11.4477 16 11 16.4477 11 17V18.4236C8.21088 17.9929 6.00712 15.7891 5.57645 13H7C7.55228 13 8 12.5523 8 12C8 11.4477 7.55228 11 7 11H5.57645C6.00712 8.21088 8.21088 6.00712 11 5.57645Z" fill="#fff"></path> </g></svg>
@@ -58,7 +59,7 @@ export default function (){
                      <span className="center"><Link href={""} >Yearly</Link></span>
                    </div>
                    <div>
-            {[1,2].map(x=><Order />)}
+                       {[1,2].map(x=><Order key={x} />)}
                    </div>
             </div>       
 
