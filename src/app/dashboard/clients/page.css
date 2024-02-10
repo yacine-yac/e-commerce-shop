@@ -11,12 +11,16 @@
     .dash-cl .dash-cl-2{width: 100%; height: auto;padding: 3% 5%; }
     .dash-cl .dash-cl-2 h1{font-size: 1rem;padding: 0% 1%;}
     .dash-cl .dash-cl-2 .list{width: 95%;height: auto;margin-top: 8%;gap: 10px; border: 0px solid blue;}
-    .dash-cl .dash-cl-2 .list .cl{width: 100%;height: 75px;border-radius: 15px;}
-    .dash-cl .dash-cl-2 .list .cl span{width: 30%;height: 100%; border: 1px solid red;}
-    .dash-cl .dash-cl-2 .list .cl h2{font-size: 0.7rem;}
-    .dash-cl .dash-cl-2 .list .cl h3{font-size: 0.5rem;}
+    .dash-cl .dash-cl-2 .list .cl{width: 100%;height: 75px;border-radius: 15px;padding: 2% 2%;}
+    .dash-cl .dash-cl-2 .list .cl span{width: 90%;height: 100%; border: 0px solid red;}
+    .dash-cl .dash-cl-2 .list .cl span a{width: 100%;height: 100%;grid-column-gap: 5px; grid-template-columns: 0.17fr 1fr;grid-template-rows: 1fr 1fr;}
+    .dash-cl .dash-cl-2 .list .cl label{font-size: 1rem;width: 45px;height: 45px;border-radius: 50%;}
+    .dash-cl .dash-cl-2 .list .cl h2{font-size: 0.7rem;border: 0px solid gray;height: 90%;}
+    .dash-cl .dash-cl-2 .list .cl h3{font-size: 0.5rem;border: 0px solid gray;margin-top: -3%;}
+    .dash-cl .dash-cl-2 .list .cl button{width: 8%;height: 70%;place-self: center right;margin-right: 2px;}
+    .dash-cl .dash-cl-2 .list .cl button svg{width: 80%;height: 90%;}
 }
-.dash-cl{border: 1px solid rgb(36, 32, 32);}
+.dash-cl{border: 0px solid rgb(36, 32, 32);}
 .dash-cl .dash-cl-1{border: 0px solid blue;background-color: var(--primary-background);}
 .dash-cl .dash-cl-1 form{border: 0px solid rgb(43, 255, 0);display: flex;flex-direction: row;padding: 0;}
 .dash-cl .dash-cl-1 form label{display: flex;box-shadow: 0px 0px 5px rgb(145,144,144);overflow: hidden;}  
@@ -24,10 +28,22 @@
 .dash-cl .dash-cl-1 form  button svg{fill:transparent !important;}  
 .dash-cl .dash-cl-1 form  button svg path{stroke:white !important;}  
 .dash-cl .dash-cl-1 form > button{box-shadow: 0px 0px 3px rgb(145,144,144);}  
-.dash-cl .dash-cl-2{border: 1px solid red;display: flex;flex-direction: column;}
-.dash-cl .dash-cl-2 h1{color: var(--icons-color);border-bottom: 1px solid rgb(62, 85, 95);}
+.dash-cl .dash-cl-2{border: 0px solid red;display: flex;flex-direction: column;}
+.dash-cl .dash-cl-2 h1{text-align: center; color: var(--icons-color);border-bottom: 1px solid rgb(62, 85, 95);}
 .dash-cl .dash-cl-2 .list{display: flex;flex-direction: column;}
-.dash-cl .dash-cl-2 .list .cl{box-shadow: 0px 0px 3px rgb(145,144,144);}
+.dash-cl .dash-cl-2 .list .cl{box-shadow: 0px 0px 3px rgb(145,144,144);display: flex;flex-direction: row;}
+.dash-cl .dash-cl-2 .list .cl span{display:flex;}
+.dash-cl .dash-cl-2 .list .cl span a{display: grid;}
+.dash-cl .dash-cl-2 .list .cl span a label{
+    grid-row: 1/-1;background-color: var(--primary-background);
+    color: var(--secondary-background);
+    box-shadow: 0px 0px 3px rgb(233, 230, 231), 0px 0px 2px #ce1c57;
+}
+.dash-cl .dash-cl-2 .list .cl h2{color: var(--icons-color);}
+.dash-cl .dash-cl-2 .list .cl h3{color: var(--icons-color);opacity: 0.8;}
+.dash-cl .dash-cl-2 .list .cl button{place-self: center right;background-color: transparent;}
+
+
 
 
 
